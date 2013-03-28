@@ -1,5 +1,6 @@
 package mods.themike.modjam;
 
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -17,8 +18,12 @@ public class ModJam {
 	@Instance("ModJamMagic!")
 	public ModJam instance;
 	
+	public static final Item itemDust = null;
+	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
+		
+		
 		
 	}
 	
