@@ -24,8 +24,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 // Use the Force, Luke.
+// Thee shall now be dubbed, Spatial Runes!
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-@Mod(modid = "ModJamMagic!", name = "ModJam - With Magic!", version = "1")
+@Mod(modid = "ModJamMagic!", name = "Spatial Runes", version = "1.0.0")
 public class ModJam {
 
 	@Instance("ModJamMagic!")
