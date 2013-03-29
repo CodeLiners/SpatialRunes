@@ -7,9 +7,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 import mods.themike.modjam.ModJam;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
 
 public class ItemMulti extends Item {
 	

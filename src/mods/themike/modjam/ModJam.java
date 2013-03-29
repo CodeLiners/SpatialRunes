@@ -2,6 +2,7 @@ package mods.themike.modjam;
 
 import mods.themike.modjam.handler.GUIHandler;
 import mods.themike.modjam.handler.MobDropHandler;
+import mods.themike.modjam.items.ItemCarvingStone;
 import mods.themike.modjam.proxy.IProxy;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -55,7 +56,7 @@ public class ModJam {
 		ModJamRecipies.init();
 		proxy.init();
 		NetworkRegistry.instance().registerGuiHandler(this, new GUIHandler());
-		GameRegistry.registerBlock(this.carvingStone, "Carving Stone");
+		GameRegistry.registerBlock(carvingStone, ItemCarvingStone.class, "Carving Stone");
 	}
 	
 	@PostInit
