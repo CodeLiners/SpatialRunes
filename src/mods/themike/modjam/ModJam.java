@@ -1,8 +1,10 @@
 package mods.themike.modjam;
 
+import mods.themike.modjam.handler.MobDropHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -30,6 +32,7 @@ public class ModJam {
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
 		
+		MinecraftForge.EVENT_BUS.register(new MobDropHandler());
 		LanguageRegistry.instance().loadLocalization("/mods/mikejam/lang/en_US.xml", "en_US", true);
 		
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
