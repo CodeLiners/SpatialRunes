@@ -2,7 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties version="1.0">
     <entry key="tile.carvingStone.name">Carving Stone</entry>
-    <entry key="blocksub.magestone.name">Magestone</entry>
+    <entry key="blocksub.magebrick.name">Magebrick</entry>
     <entry key="rune.blank.name">Uncarved Rune</entry>
     <entry key="itemGroup.modJam">Spatial Runes</entry>
 </properties>
