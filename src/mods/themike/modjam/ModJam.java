@@ -41,7 +41,7 @@ public class ModJam {
 	
 	@Init
 	public void init(FMLInitializationEvent event) {
-		
+		ModJamRecipies.init();
 	}
 	
 	@PostInit
