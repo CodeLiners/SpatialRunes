@@ -3,5 +3,6 @@
 <properties version="1.0">
     <entry key="itemsub.dustSpatial.name">Spatial Dust</entry>
     <entry key="itemsub.essence.name">Crystalline Essence</entry>
+    <entry key="rune.blank.name">Uncarved Rune</entry>
     <entry key="itemGroup.modJam">ModJam - With Magic!</entry>
 </properties>

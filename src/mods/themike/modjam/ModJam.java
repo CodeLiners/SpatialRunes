@@ -25,6 +25,7 @@ public class ModJam {
 	public ModJam instance;
 	
 	public static Item item;
+	public static Item runes;
 	
 	public static CreativeTabs tab = new ModJamTab();
 
