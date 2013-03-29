@@ -3,6 +3,7 @@ package mods.themike.modjam.blocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.themike.modjam.ModJam;
+import mods.themike.modjam.proxy.ClientProxy;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -29,6 +30,11 @@ public class BlockCarvingStone extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
 			this.blockIcon = reg.registerIcon("mikejam:carving");
+	}
+	
+	@Override
+	public int getRenderType() {
+		return ClientProxy.handler.getRenderId();
 	}
 
 }
