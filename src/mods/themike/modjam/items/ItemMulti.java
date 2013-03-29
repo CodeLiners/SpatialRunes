@@ -53,7 +53,7 @@ public class ItemMulti extends Item {
 	
 	@Override 
 	public boolean hasEffect(ItemStack stack) {
-		if(stack.getItemDamage() == 0) {
+		if(stack.getItemDamage() < 2) {
 			return true;
 		}
 		return false;
