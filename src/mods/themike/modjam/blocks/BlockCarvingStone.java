@@ -27,12 +27,6 @@ public class BlockCarvingStone extends BlockContainer {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
-			this.blockIcon = reg.registerIcon("mikejam:carving");
-	}
-	
-	@Override
 	public int getRenderType() {
 		return ClientProxy.handler.getRenderId();
 	}
