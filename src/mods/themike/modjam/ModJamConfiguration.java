@@ -3,6 +3,7 @@ package mods.themike.modjam;
 import mods.themike.modjam.blocks.BlockCarvingStone;
 import mods.themike.modjam.blocks.BlockDecoration;
 import mods.themike.modjam.items.ItemMulti;
+import mods.themike.modjam.items.ItemPapyrus;
 import mods.themike.modjam.items.ItemRune;
 import net.minecraftforge.common.Configuration;
 
@@ -15,6 +16,7 @@ public class ModJamConfiguration {
 		
 		ModJam.item = new ItemMulti(config.getItem("Main Items", 5500).getInt(5500));
 		ModJam.runes = new ItemRune(config.getItem("Runes", 5501).getInt(5501));
+		ModJam.scroll = new ItemPapyrus(config.getItem("Papyrus Scroll", 5502).getInt(5502));
 		
 	}
 	

@@ -37,6 +37,7 @@ public class ModJam {
 	
 	public static Item item;
 	public static Item runes;
+	public static Item scroll;
 	
 	public static Block carvingStone;
 	public static Block decoration;
@@ -66,6 +67,7 @@ public class ModJam {
 		GameRegistry.registerTileEntity(TileEntityCarvingStone.class, "Carving Stone");
 		LanguageRegistry.instance().addStringLocalization("itemsub.dustSpatial.name", ColorUtils.applyColor(9) + "Spatial Dust");
 		LanguageRegistry.instance().addStringLocalization("itemsub.essence.name", ColorUtils.applyColor(9) + "Crystalline Essence");
+		LanguageRegistry.instance().addStringLocalization("item.papyrusScroll.name", ColorUtils.applyColor(14) + "Papyrus Scroll");
 	}
 	
 	@PostInit
