@@ -5,6 +5,7 @@ import mods.themike.modjam.handler.MobDropHandler;
 import mods.themike.modjam.items.ItemCarvingStone;
 import mods.themike.modjam.proxy.IProxy;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
+import mods.themike.modjam.utils.ColorUtils;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -60,6 +61,8 @@ public class ModJam {
 		NetworkRegistry.instance().registerGuiHandler(this, new GUIHandler());
 		GameRegistry.registerBlock(carvingStone, ItemCarvingStone.class, "Carving Stone");
 		GameRegistry.registerTileEntity(TileEntityCarvingStone.class, "Carving Stone");
+		LanguageRegistry.instance().addStringLocalization("itemsub.dustSpatial.name", ColorUtils.applyColor(9) + "Spatial Dust");
+		LanguageRegistry.instance().addStringLocalization("itemsub.essence.name", ColorUtils.applyColor(9) + "Crystalline Essence");
 	}
 	
 	@PostInit
