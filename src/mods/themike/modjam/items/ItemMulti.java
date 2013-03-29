@@ -13,7 +13,7 @@ import net.minecraft.util.Icon;
 
 public class ItemMulti extends Item {
 	
-	private static final String[] subNames = new String[]{"dustSpacial"};
+	private static final String[] subNames = new String[]{"dustSpatial", "essence"};
 	private static Icon[] subIcons = new Icon[subNames.length];
 	
 	public ItemMulti(int par1) {

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties version="1.0">
-    <entry key="itemsub.dustSpacial.name">Spacial Dust</entry>
+    <entry key="itemsub.dustSpatial.name">Spatial Dust</entry>
+    <entry key="itemsub.essence.name">Crystalline Essence</entry>
+    <entry key="itemGroup.modJam">ModJam - With Magic!</entry>
 </properties>

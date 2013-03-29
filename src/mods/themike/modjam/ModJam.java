@@ -24,7 +24,8 @@ public class ModJam {
 	
 	public static Item item;
 	
-	public static CreativeTabs tab;
+	public static CreativeTabs tab = new ModJamTab();
+
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
@@ -32,9 +33,7 @@ public class ModJam {
 		LanguageRegistry.instance().loadLocalization("/mods/mikejam/lang/en_US.xml", "en_US", true);
 		
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
-		ModJamConfiguration.init(config);
-		tab = new ModJamTab();
-		
+		ModJamConfiguration.init(config);		
 	}
 	
 	@Init
