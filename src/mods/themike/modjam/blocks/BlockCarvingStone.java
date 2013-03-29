@@ -3,6 +3,7 @@ package mods.themike.modjam.blocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.themike.modjam.ModJam;
+import mods.themike.modjam.tile.TileEntityCarvingStone;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -21,7 +22,7 @@ public class BlockCarvingStone extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		return null;
+		return new TileEntityCarvingStone();
 	}
 	
 	@Override
