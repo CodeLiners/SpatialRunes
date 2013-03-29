@@ -31,7 +31,7 @@ public class ItemRune extends ItemMulti {
 	@SideOnly(Side.CLIENT)
 	public void updateIcons(IconRegister reg) {
 		for(int par1 = 0; par1 < subNames.length; par1++) {
-			subIcons[par1] = reg.registerIcon("mikejam:" + subNames[par1]);
+			subIcons[par1] = reg.registerIcon("mikejam:rune" + subNames[par1]);
 		}
 	}
 	
