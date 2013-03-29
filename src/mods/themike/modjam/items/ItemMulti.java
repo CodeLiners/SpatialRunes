@@ -4,6 +4,7 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import mods.themike.modjam.ModJam;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -19,13 +20,13 @@ public class ItemMulti extends Item {
 		super(par1);
 		this.hasSubtypes = true;
 		this.setUnlocalizedName("miscItems");
-		this.setCreativeTab(CreativeTabs.tabMisc);
+		this.setCreativeTab(ModJam.tab);
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		if(stack.getItemDamage() >= 0 && stack.getItemDamage() < subNames.length) {
-			return this.getUnlocalizedName() + subNames[stack.getItemDamage()];
+			return "itemsub." + subNames[stack.getItemDamage()];
 		}
 		return null;
 	}
