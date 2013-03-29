@@ -40,5 +40,11 @@ public class BlockCarvingStone extends BlockContainer {
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister reg) {
+		this.blockIcon = reg.registerIcon("mikejam:carvingStone");
+	}
 
 }
