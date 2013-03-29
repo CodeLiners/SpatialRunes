@@ -3,6 +3,7 @@ package mods.themike.modjam;
 import mods.themike.modjam.handler.GUIHandler;
 import mods.themike.modjam.handler.MobDropHandler;
 import mods.themike.modjam.proxy.IProxy;
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
@@ -18,6 +19,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 // Use the Force, Luke.
@@ -30,6 +32,8 @@ public class ModJam {
 	
 	public static Item item;
 	public static Item runes;
+	
+	public static Block carvingStone;
 	
 	public static CreativeTabs tab = new ModJamTab();
 
@@ -51,6 +55,7 @@ public class ModJam {
 		ModJamRecipies.init();
 		proxy.init();
 		NetworkRegistry.instance().registerGuiHandler(this, new GUIHandler());
+		GameRegistry.registerBlock(this.carvingStone, "Carving Stone");
 	}
 	
 	@PostInit

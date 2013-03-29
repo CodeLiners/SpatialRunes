@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties version="1.0">
+    <entry key="tile.carvingStone.name">Carving Stone</entry>
     <entry key="itemsub.dustSpatial.name">Spatial Dust</entry>
     <entry key="itemsub.essence.name">Crystalline Essence</entry>
     <entry key="rune.blank.name">Uncarved Rune</entry>
