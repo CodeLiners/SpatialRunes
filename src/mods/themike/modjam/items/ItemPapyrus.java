@@ -20,10 +20,5 @@ public class ItemPapyrus extends Item {
 	public void updateIcons(IconRegister reg) {
 		this.iconIndex = reg.registerIcon("mikejam:papyrusScroll");
 	}
-	
-	@Override 
-	public boolean hasEffect(ItemStack stack) {
-		return false;
-	}
 
 }
