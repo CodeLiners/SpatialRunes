@@ -11,7 +11,8 @@ public class GuiPapyrusScroll extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
-		
+		this.mc.renderEngine.bindTexture("/mods/mikejam/textures/gui/parchment.png");
+		this.drawTexturedModalRect((this.xSize - 93) / 2, (this.ySize - 89) / 2, 0, 0, 187, 177);
 	}
 	
 	@Override
