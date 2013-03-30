@@ -4,7 +4,10 @@ import com.google.common.collect.ObjectArrays;
 
 public class RuneRegistry {
 	
-	private static IRune[] runes = new IRune[100];
+	private static IRune[] runes = new IRune[]{
+		new RuneBlank(), 
+		new RuneRegeneration()
+	};
 	
 	public static void appendRune(IRune rune) {
 		runes = ObjectArrays.concat(rune, runes);

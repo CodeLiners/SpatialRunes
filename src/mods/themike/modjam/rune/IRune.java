@@ -7,8 +7,6 @@ public interface IRune {
 	public void onUse(EntityPlayer player);
 	
 	public String getName();
-
-	public String getIconPath();
 	
 	public int getLevel();
 	

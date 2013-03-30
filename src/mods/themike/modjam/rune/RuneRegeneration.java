@@ -2,19 +2,21 @@ package mods.themike.modjam.rune;
 
 import net.minecraft.entity.player.EntityPlayer;
 
-public class RuneBlank implements IRune {
+public class RuneRegeneration implements IRune {
 
 	@Override
-	public void onUse(EntityPlayer player) {}
+	public void onUse(EntityPlayer player) {
+		player.heal(10);
+	}
 
 	@Override
 	public String getName() {
-		return "blank";
+		return "regeneration";
 	}
 
 	@Override
 	public int getLevel() {
-		return 0;
+		return 10;
 	}
 
 }

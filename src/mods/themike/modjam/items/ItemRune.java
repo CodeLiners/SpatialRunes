@@ -7,9 +7,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 import mods.themike.modjam.ModJam;
 import mods.themike.modjam.rune.IRune;
 import mods.themike.modjam.rune.RuneBlank;
+import mods.themike.modjam.rune.RuneRegeneration;
 import mods.themike.modjam.rune.RuneRegistry;
+import mods.themike.modjam.utils.ColorUtils;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
@@ -23,8 +26,7 @@ public class ItemRune extends Item {
 		this.hasSubtypes = true;
 		this.setUnlocalizedName("itemRune");
 		this.setCreativeTab(ModJam.tab);
-		
-		RuneRegistry.appendRune(new RuneBlank());
+
 	}
 	
 	@Override
@@ -63,6 +65,13 @@ public class ItemRune extends Item {
 	@Override 
 	public boolean hasEffect(ItemStack stack) {
 		return false;
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+		if(stack.getItemDamage() != 0 && RuneRegistry.getrunes()[stack.getItemDamage()] != null) {
+			list.add(ColorUtils.applyColor(9) + "Level " + String.valueOf(RuneRegistry.getrunes()[stack.getItemDamage()].getLevel()) + " Rune.");
+		}
 	}
 
 }
