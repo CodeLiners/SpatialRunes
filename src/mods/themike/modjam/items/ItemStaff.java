@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
@@ -75,21 +76,24 @@ public class ItemStaff extends ItemMulti {
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		super.onItemRightClick(stack, world, player);
-		if(!world.isRemote && !player.isSneaking()) {\
-			
-			String runeName = stack.getTagCompound().getString("runeName");
-			IRune rune = null;
-			for(IRune par1 : RuneRegistry.getrunes()) {
-				if(par1.getName() == runeName) {
-					rune = par1;
+		ItemStack newStack = stack.copy();
+
+		if(!world.isRemote && !player.isSneaking() && stack.getTagCompound() != null) {
+			ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
+			if(runeStack != null) {
+				IRune rune = RuneRegistry.getrunes()[runeStack.getItemDamage()];
+				rune.onUse(player);
+				if(runeStack.stackSize == 1) {
+					newStack.setTagCompound(null);
+				} else {
+					NBTTagCompound tag = new NBTTagCompound();
+					runeStack.stackSize--;
+					runeStack.writeToNBT(tag);
+					newStack.getTagCompound().setTag("item", tag);
 				}
 			}
-			if(rune != null) {
-				
-				rune.onUse(player);
-			}
 		}
-		return stack;
+		return newStack;
 	}
 
 }
