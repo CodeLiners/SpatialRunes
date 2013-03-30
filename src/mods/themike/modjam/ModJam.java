@@ -41,6 +41,7 @@ public class ModJam {
 	
 	public static Block carvingStone;
 	public static Block decoration;
+	public static Block slabs;
 	
 	public static CreativeTabs tab = new ModJamTab();
 
@@ -64,6 +65,7 @@ public class ModJam {
 		NetworkRegistry.instance().registerGuiHandler(this, new GUIHandler());
 		GameRegistry.registerBlock(carvingStone, ItemCarvingStone.class, "Carving Stone");
 		GameRegistry.registerBlock(decoration, ItemBlockDecoration.class, "Decoration");
+		GameRegistry.registerBlock(slabs, "Slabs");
 		GameRegistry.registerTileEntity(TileEntityCarvingStone.class, "Carving Stone");
 		LanguageRegistry.instance().addStringLocalization("itemsub.dustSpatial.name", ColorUtils.applyColor(9) + "Spatial Dust");
 		LanguageRegistry.instance().addStringLocalization("itemsub.essence.name", ColorUtils.applyColor(9) + "Crystalline Essence");

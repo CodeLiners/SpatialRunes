@@ -25,16 +25,9 @@ public class BlockSlabs extends BlockHalfSlab {
 	}
 	
 	@Override
-	public Icon getBlockTextureFromSideAndMetadata(int side, int metadata) {
-		return subIcons[metadata];
-	}
-	
-	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		for(int par1 = 0; par1 < MultiBlockUtils.getArray().length; par1++) {
-			subIcons[par1] = reg.registerIcon("mikejam:" + MultiBlockUtils.getArray()[par1]);
-		}
+		this.blockIcon = reg.registerIcon("mikejam:magebrick");
 	}
 	
 	@Override
@@ -43,10 +36,8 @@ public class BlockSlabs extends BlockHalfSlab {
 	}
 	
 	@Override
-	public void getSubBlocks(int ID, CreativeTabs tab, List subItems) {
-		for(int par1 = 0; par1 < MultiBlockUtils.getArray().length; par1++) {
-			subItems.add(new ItemStack(this, 1, par1));
-		}
+	public String getUnlocalizedName() {
+		return "slab.magebrick";
 	}
 
 	@Override

@@ -3,6 +3,7 @@
 <properties version="1.0">
     <entry key="tile.carvingStone.name">Carving Stone</entry>
     <entry key="blocksub.magebrick.name">Magebrick</entry>
+    <entry key="slab.magebrick.name">Magebrick Slab</entry>
     <entry key="rune.blank.name">Uncarved Rune</entry>
     <entry key="itemGroup.modJam">Spatial Runes</entry>
 </properties>
