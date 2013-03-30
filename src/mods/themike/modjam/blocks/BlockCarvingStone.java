@@ -30,6 +30,12 @@ public class BlockCarvingStone extends BlockContainer {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister reg) {
+		this.blockIcon = reg.registerIcon("stone");
+	}
+	
+	@Override
 	public int getRenderType() {
 		return ClientProxy.ID;
 	}

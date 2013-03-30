@@ -26,7 +26,13 @@ public class GuiPapyrusScroll extends GuiContainer {
 		GL11.glPushMatrix();
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.renderEngine.bindTexture("/mods/mikejam/textures/gui/parts.png");
-		this.drawTexturedModalRect(150, 110, 0, 0, 22, 14);
+		if(x > 150 && x < 172 && y > 110 && y < 114) 
+			this.drawTexturedModalRect(150, 110, 0, 14, 22, 14);
+		else {
+			this.drawTexturedModalRect(150, 110, 0, 0, 22, 14);
+		}
+			
+		this.drawTexturedModalRect(14, 110, 0, 14, 22, 14);
 		GL11.glPopMatrix();
 	}
 
