@@ -40,7 +40,7 @@ public class SimpleBlockRenderingHandler implements ISimpleBlockRenderingHandler
 
 	@Override
 	public int getRenderId() {
-		return RenderingRegistry.getNextAvailableRenderId();
+		return this.getRenderId();
 	}
 
 }

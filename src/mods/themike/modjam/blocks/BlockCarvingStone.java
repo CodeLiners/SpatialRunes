@@ -27,6 +27,11 @@ public class BlockCarvingStone extends BlockContainer {
 	}
 	
 	@Override
+	public int getRenderType() {
+		return ClientProxy.ID;
+	}
+	
+	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
