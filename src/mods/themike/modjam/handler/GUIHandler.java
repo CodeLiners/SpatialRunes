@@ -9,18 +9,19 @@ import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GUIHandler implements IGuiHandler {
-
-	private static Container container = new ContainerPapyrusScroll();
 	
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		if(player.getHeldItem().getItem() instanceof ItemPapyrus) {
+			return new ContainerPapyrusScroll();
+		}
 		return null;
 	}
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		if(player.getHeldItem().getItem() instanceof ItemPapyrus) {
-			return new GuiPapyrusScroll(container);
+			return new GuiPapyrusScroll(new ContainerPapyrusScroll());
 		}
 		return null;
 	}
