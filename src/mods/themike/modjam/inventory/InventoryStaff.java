@@ -4,6 +4,7 @@ import mods.themike.modjam.items.ItemRune;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 
 public class InventoryStaff implements IInventory {
 	
@@ -66,10 +67,31 @@ public class InventoryStaff implements IInventory {
 	}
 
 	@Override
-	public void openChest() {}
+	public void openChest() {
+		ItemStack staff = player.getHeldItem();
+		if(staff != null) {
+			if(staff.getTagCompound() != null) {
+				if(staff.getTagCompound().getTag("item") != null) {
+					setInventorySlotContents(0, ItemStack.loadItemStackFromNBT((NBTTagCompound) staff.getTagCompound().getTag("item")));
+				}
+			}
+		}
+	}
+	
 
 	@Override
-	public void closeChest() {}
+	public void closeChest() {
+		ItemStack staff = player.getHeldItem();
+		if(staff != null) {
+			ItemStack rune = inventory[0];
+			if(rune != null) {
+				NBTTagCompound tag = new NBTTagCompound();
+				rune.writeToNBT(tag);
+				staff.setTagCompound(new NBTTagCompound());
+				staff.getTagCompound().setTag("item", tag);
+			}
+		}
+	}
 
 	@Override
 	public boolean isStackValidForSlot(int i, ItemStack itemstack) {

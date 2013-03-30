@@ -30,15 +30,6 @@ public class ContainerStaff extends Container {
 			this.addSlotToContainer(new Slot(player.inventory, var3, 8 + var3 * 18, 142));
 		}
 		
-		ItemStack staff = player.getHeldItem();
-		if(staff != null) {
-			if(staff.getTagCompound() != null) {
-				if(staff.getTagCompound().getTag("item") != null) {
-					inventory.setInventorySlotContents(0, ItemStack.loadItemStackFromNBT((NBTTagCompound) staff.getTagCompound().getTag("item")));
-				}
-			}
-		}
-		
 	}
 
 	@Override
@@ -65,20 +56,6 @@ public class ContainerStaff extends Container {
 			return stackCopy;
 		}
 		return null;
-	}
-	
-	@Override
-	public void onCraftGuiClosed(EntityPlayer par1) {
-		ItemStack staff = player.getHeldItem();
-		if(staff != null) {
-			ItemStack rune = inventory.getStackInSlot(0);
-			if(rune != null) {
-				NBTTagCompound tag = new NBTTagCompound();
-				rune.writeToNBT(tag);
-				staff.setTagCompound(new NBTTagCompound());
-				staff.getTagCompound().setTag("item", tag);
-			}
-		}
 	}
 
 }
