@@ -21,6 +21,8 @@ public class BlockDecoration extends Block {
 	public BlockDecoration(int par1) {
 		super(par1, Material.rock);
 		this.setCreativeTab(ModJam.tab);
+		this.setResistance(15.0F);
+		this.setHardness(3.0F);
 	}
 	
 	@Override

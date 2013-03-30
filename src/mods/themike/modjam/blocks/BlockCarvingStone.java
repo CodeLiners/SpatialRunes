@@ -27,11 +27,6 @@ public class BlockCarvingStone extends BlockContainer {
 	}
 	
 	@Override
-	public int getRenderType() {
-		return ClientProxy.handler.getRenderId();
-	}
-	
-	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
@@ -39,12 +34,6 @@ public class BlockCarvingStone extends BlockContainer {
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
-		this.blockIcon = reg.registerIcon("mikejam:carvingStone");
 	}
 
 }
