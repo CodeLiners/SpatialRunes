@@ -13,5 +13,10 @@ public class GuiPapyrusScroll extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
 		
 	}
+	
+	@Override
+	protected void drawGuiContainerForegroundLayer(int x, int y) {
+		
+	}
 
 }
