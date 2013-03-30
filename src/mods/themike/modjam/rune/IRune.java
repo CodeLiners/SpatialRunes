@@ -10,4 +10,6 @@ public interface IRune {
 
 	public String getIconPath();
 	
+	public int getLevel();
+	
 }

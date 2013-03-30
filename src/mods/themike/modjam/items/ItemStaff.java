@@ -5,10 +5,14 @@ import java.util.List;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.themike.modjam.ModJam;
+import mods.themike.modjam.rune.IRune;
+import mods.themike.modjam.rune.RuneRegistry;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
 
 public class ItemStaff extends ItemMulti {
 
@@ -57,6 +61,35 @@ public class ItemStaff extends ItemMulti {
 			return true;
 		}
 		return false;
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+		if(stack.getItemDamage() == 0) {
+			list.add("Can bind up to Level 25.");
+		} else {
+			list.add("Can bind all levels.");
+		}
+	}
+	
+	@Override
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+		super.onItemRightClick(stack, world, player);
+		if(!world.isRemote && !player.isSneaking()) {\
+			
+			String runeName = stack.getTagCompound().getString("runeName");
+			IRune rune = null;
+			for(IRune par1 : RuneRegistry.getrunes()) {
+				if(par1.getName() == runeName) {
+					rune = par1;
+				}
+			}
+			if(rune != null) {
+				
+				rune.onUse(player);
+			}
+		}
+		return stack;
 	}
 
 }
