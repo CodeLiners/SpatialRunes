@@ -32,7 +32,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class ModJam {
 
 	@Instance("ModJamMagic!")
-	public ModJam instance;
+	public static ModJam instance;
 	
 	public static Item item;
 	public static Item runes;
