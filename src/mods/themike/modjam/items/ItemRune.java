@@ -15,6 +15,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
 
 public class ItemRune extends Item {
@@ -49,7 +50,15 @@ public class ItemRune extends Item {
 	public void getSubItems(int ID, CreativeTabs tabs, List list) {
 		for(int par1 = 0; par1 < RuneRegistry.getrunes().length; par1++) {
 			if(RuneRegistry.getrunes()[par1] != null) {
-				list.add(new ItemStack(ID, 1, par1));
+				if(par1 == 0) {
+					list.add(new ItemStack(ID, 1, par1));
+				} else {
+					NBTTagCompound tag = new NBTTagCompound();
+					tag.setInteger("uses", RuneRegistry.getrunes()[par1].getUses());
+					ItemStack stack = new ItemStack(ID, 1, par1);
+					stack.setTagCompound(tag);
+					list.add(stack);
+				}
 			}
 		}
 	}
@@ -71,6 +80,8 @@ public class ItemRune extends Item {
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		if(stack.getItemDamage() != 0 && RuneRegistry.getrunes()[stack.getItemDamage()] != null) {
 			list.add(ColorUtils.applyColor(9) + "Level " + String.valueOf(RuneRegistry.getrunes()[stack.getItemDamage()].getLevel()) + " Rune.");
+			int uses = stack.getTagCompound().getInteger("uses");
+			list.add(ColorUtils.applyColor(14) + String.valueOf(uses) + " uses left.");
 		}
 	}
 

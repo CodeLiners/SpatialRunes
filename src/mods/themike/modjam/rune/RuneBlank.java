@@ -17,4 +17,9 @@ public class RuneBlank implements IRune {
 		return 0;
 	}
 
+	@Override
+	public int getUses() {
+		return 0;
+	}
+
 }

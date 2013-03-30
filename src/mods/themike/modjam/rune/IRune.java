@@ -10,4 +10,6 @@ public interface IRune {
 	
 	public int getLevel();
 	
+	public int getUses();
+	
 }
