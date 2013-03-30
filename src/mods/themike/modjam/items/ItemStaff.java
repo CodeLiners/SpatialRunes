@@ -91,6 +91,9 @@ public class ItemStaff extends ItemMulti {
 				}
 			}
 		}
+		if(player.isSneaking()) {
+			player.openGui(ModJam.instance, 1, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+		}
 		return newStack;
 	}
 
