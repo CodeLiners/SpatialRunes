@@ -18,7 +18,9 @@ public class GuiPapyrusScroll extends GuiContainer {
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
-		this.drawString(fontRenderer, "Papyrus Scroll", (xSize - fontRenderer.getStringWidth("Papyrus Scroll")) / 2, 12, 4210752);
+		this.fontRenderer.drawString("Papyrus Scroll", (xSize - fontRenderer.getStringWidth("Papyrus Scroll")) / 2, 12, 0000000, false);
+		this.mc.renderEngine.bindTexture("/mods/mikejam/textures/gui/parts.png");
+		this.drawTexturedModalRect(305, 20, 0, 0, 22, 15);
 	}
 
 }
