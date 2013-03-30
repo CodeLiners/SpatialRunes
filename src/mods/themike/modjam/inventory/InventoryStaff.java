@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 public class InventoryStaff implements IInventory {
 	
-	private ItemStack[] inventory = new ItemStack[3];
+	private ItemStack[] inventory = new ItemStack[1];
 
 	EntityPlayer player = null;
 	
@@ -17,7 +17,7 @@ public class InventoryStaff implements IInventory {
 	
 	@Override
 	public int getSizeInventory() {
-		return 3;
+		return 1;
 	}
 
 	@Override
