@@ -75,6 +75,7 @@ public class ContainerStaff extends Container {
 			if(rune != null) {
 				NBTTagCompound tag = new NBTTagCompound();
 				rune.writeToNBT(tag);
+				staff.setTagCompound(new NBTTagCompound());
 				staff.getTagCompound().setTag("item", tag);
 			}
 		}
