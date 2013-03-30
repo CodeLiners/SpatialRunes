@@ -37,7 +37,7 @@ public class ItemRune extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void updateIcons(IconRegister reg) {
-		for(int par1 = 0; par1 != 101; par1++) {
+		for(int par1 = 0; par1 != RuneRegistry.getrunes().length; par1++) {
 			IRune rune = RuneRegistry.getrunes()[par1];
 			if(rune != null) {
 				icons[par1] = reg.registerIcon("mikejam:rune" + rune.getName());
@@ -47,7 +47,7 @@ public class ItemRune extends Item {
 	
 	@Override
 	public void getSubItems(int ID, CreativeTabs tabs, List list) {
-		for(int par1 = 0; par1 < 101; par1++) {
+		for(int par1 = 0; par1 < RuneRegistry.getrunes().length; par1++) {
 			if(RuneRegistry.getrunes()[par1] != null) {
 				list.add(new ItemStack(ID, 1, par1));
 			}
@@ -56,7 +56,7 @@ public class ItemRune extends Item {
 	
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		if(stack.getItemDamage() >= 0 && stack.getItemDamage() < 101) {
+		if(stack.getItemDamage() >= 0 && stack.getItemDamage() < RuneRegistry.getrunes().length) {
 			return "rune." + RuneRegistry.getrunes()[stack.getItemDamage()].getName();
 		}
 		return null;

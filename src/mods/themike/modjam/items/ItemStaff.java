@@ -83,13 +83,11 @@ public class ItemStaff extends ItemMulti {
 			if(runeStack != null) {
 				IRune rune = RuneRegistry.getrunes()[runeStack.getItemDamage()];
 				rune.onUse(player);
-				if(runeStack.stackSize == 1) {
-					newStack.setTagCompound(null);
+				int uses = runeStack.getTagCompound().getInteger("uses");
+				if(uses == 1) {
+					stack.setTagCompound(null);
 				} else {
-					NBTTagCompound tag = new NBTTagCompound();
-					runeStack.stackSize--;
-					runeStack.writeToNBT(tag);
-					newStack.getTagCompound().setTag("item", tag);
+					runeStack.getTagCompound().setInteger("uses", uses - 1);
 				}
 			}
 		}
