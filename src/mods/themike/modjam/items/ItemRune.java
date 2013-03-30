@@ -78,7 +78,7 @@ public class ItemRune extends Item {
 	
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		if(stack.getItemDamage() != 0 && RuneRegistry.getrunes()[stack.getItemDamage()] != null) {
+		if(stack.getTagCompound() != null && stack.getItemDamage() != 0 && RuneRegistry.getrunes()[stack.getItemDamage()] != null) {
 			list.add(ColorUtils.applyColor(9) + "Level " + String.valueOf(RuneRegistry.getrunes()[stack.getItemDamage()].getLevel()) + " Rune.");
 			int uses = stack.getTagCompound().getInteger("uses");
 			list.add(ColorUtils.applyColor(14) + String.valueOf(uses) + " uses left.");
