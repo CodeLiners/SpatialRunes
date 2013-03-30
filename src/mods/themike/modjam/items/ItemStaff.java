@@ -12,6 +12,7 @@ import net.minecraft.util.Icon;
 
 public class ItemStaff extends ItemMulti {
 
+	
 	protected static String[] subNames = new String[]{"apprentice", "mage"};
 	private static Icon[] subIcons = new Icon[subNames.length];
 	
