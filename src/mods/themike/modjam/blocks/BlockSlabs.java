@@ -19,6 +19,7 @@ public class BlockSlabs extends BlockHalfSlab {
 	
 	private static Icon[] subIcons = new Icon[MultiBlockUtils.getArray().length];
 
+	
 	public BlockSlabs(int par1) {
 		super(par1, false, Material.rock);
 		this.setCreativeTab(ModJam.tab);
