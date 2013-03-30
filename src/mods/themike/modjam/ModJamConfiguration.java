@@ -6,6 +6,7 @@ import mods.themike.modjam.blocks.BlockSlabs;
 import mods.themike.modjam.items.ItemMulti;
 import mods.themike.modjam.items.ItemPapyrus;
 import mods.themike.modjam.items.ItemRune;
+import mods.themike.modjam.items.ItemStaff;
 import net.minecraftforge.common.Configuration;
 
 public class ModJamConfiguration {
@@ -19,7 +20,8 @@ public class ModJamConfiguration {
 		ModJam.item = new ItemMulti(config.getItem("Main Items", 5500).getInt(5500));
 		ModJam.runes = new ItemRune(config.getItem("Runes", 5501).getInt(5501));
 		ModJam.scroll = new ItemPapyrus(config.getItem("Papyrus Scroll", 5502).getInt(5502));
-		
+		ModJam.staff = new ItemStaff(config.getItem("Staffs", 5503).getInt(5503));
+
 	}
 	
 }
