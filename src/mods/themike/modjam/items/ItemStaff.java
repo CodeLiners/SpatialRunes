@@ -95,6 +95,7 @@ public class ItemStaff extends ItemMulti {
 			if(runeStack != null) {
 				System.out.println("Hello Runes!");
 				IRune rune = RuneRegistry.getrunes()[runeStack.getItemDamage()];
+				player.playSound("mods.mikejam.sounds.sucess", 1.0F, 1.0F);
 				rune.onUse(player);
 				int uses = runeStack.getTagCompound().getInteger("uses");
 				if(uses == 1) {
