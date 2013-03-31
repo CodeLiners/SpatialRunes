@@ -91,9 +91,10 @@ public class ItemStaff extends ItemMulti {
 		
 		if(!world.isRemote && !player.isSneaking() && stack.getTagCompound() != null) {
 			ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
-			if(runeStack != null && player.experience >= RuneRegistry.getrunes()[runeStack.getItemDamage()].getLevel() * 17) {
+			if(runeStack != null && player.experience >= RuneRegistry.getrunes()[runeStack.getItemDamage()].getLevel()  * 17) {
 				System.out.println("Hello Runes!");
 				IRune rune = RuneRegistry.getrunes()[runeStack.getItemDamage()];
+				player.experience = player.experience - (RuneRegistry.getrunes()[runeStack.getItemDamage()].getLevel()  * 17);
 				rune.onUse(player);
 				int uses = runeStack.getTagCompound().getInteger("uses");
 				if(uses == 1) {
@@ -115,7 +116,7 @@ public class ItemStaff extends ItemMulti {
 				if(runeStack != null && player.experience >= RuneRegistry.getrunes()[runeStack.getItemDamage()].getLevel() * 17) {
 					player.playSound("mods.mikejam.sounds.sucess", 1.0F, 1.0F);
 				} else if(runeStack != null) {
-					
+					player.playSound("mods.mikejam.sounds.failure", 1.0F, 1.0F);
 				}
 			}
 		}
