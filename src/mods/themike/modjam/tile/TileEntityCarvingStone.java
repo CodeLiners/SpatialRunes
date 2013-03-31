@@ -25,11 +25,17 @@ public class TileEntityCarvingStone extends TileEntity implements IInventory {
 
 	@Override
 	public ItemStack decrStackSize(int i, int j) {
-		if(inventory[i] != null) { 
-			ItemStack newStack = inventory[i].copy();
-			if(newStack.stackSize - j > 0) {
-				newStack.stackSize = inventory[i].stackSize - j;
-				return newStack; 
+		if(inventory[i] != null) {
+			if(inventory[i].stackSize <= j) {
+				ItemStack newStack = inventory[i].copy();
+				inventory[i] = null;
+				return newStack;
+			} else {
+				ItemStack newStack = inventory[i].splitStack(j);
+				if(inventory[i].stackSize == 0) {
+					inventory[i] = null;
+				}
+				return newStack;
 			}
 		}
 		return null;

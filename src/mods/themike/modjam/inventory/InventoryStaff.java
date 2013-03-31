@@ -14,7 +14,6 @@ public class InventoryStaff implements IInventory {
 	
 	public InventoryStaff(EntityPlayer par1) {
 		player = par1;
-		
 	}
 	
 	@Override
@@ -29,6 +28,19 @@ public class InventoryStaff implements IInventory {
 
 	@Override
 	public ItemStack decrStackSize(int i, int j) {
+		if(inventory[i] != null) {
+			if(inventory[i].stackSize <= j) {
+				ItemStack newStack = inventory[i].copy();
+				inventory[i] = null;
+				return newStack;
+			} else {
+				ItemStack newStack = inventory[i].splitStack(j);
+				if(inventory[i].stackSize == 0) {
+					inventory[i] = null;
+				}
+				return newStack;
+			}
+		}
 		return null;
 	}
 

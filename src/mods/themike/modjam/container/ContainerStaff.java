@@ -65,6 +65,11 @@ public class ContainerStaff extends Container {
 			} else if(!this.mergeItemStack(stackInSlot, 0, 0, false)) {
 				return null;
 			}
+			if(stackInSlot.stackSize == 0) {
+				slotInQuestion.putStack(null);
+			} else {
+				slotInQuestion.onSlotChanged();
+			}
 			return stackCopy;
 		}
 		return null;
