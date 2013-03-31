@@ -1,12 +1,15 @@
 package mods.themike.modjam.handler;
 
+import mods.themike.modjam.container.ContainerCarvingStone;
 import mods.themike.modjam.container.ContainerPapyrusScroll;
 import mods.themike.modjam.container.ContainerStaff;
+import mods.themike.modjam.gui.GuiCarvingStone;
 import mods.themike.modjam.gui.GuiPapyrusScroll;
 import mods.themike.modjam.gui.GuiStaff;
 import mods.themike.modjam.inventory.InventoryStaff;
 import mods.themike.modjam.items.ItemPapyrus;
 import mods.themike.modjam.items.ItemStaff;
+import mods.themike.modjam.tile.TileEntityCarvingStone;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -23,6 +26,9 @@ public class GUIHandler implements IGuiHandler {
 		if(player.getHeldItem().getItem() instanceof ItemStaff) {
 			return new ContainerStaff(player, new InventoryStaff(player));
 		}
+		if(ID == 2) {
+			return new ContainerCarvingStone(player, (TileEntityCarvingStone) world.getBlockTileEntity(x, y, z));
+		}
 		return null;
 	}
 
@@ -33,6 +39,9 @@ public class GUIHandler implements IGuiHandler {
 		}
 		if(player.getHeldItem().getItem() instanceof ItemStaff) {
 			return new GuiStaff(player, new InventoryStaff(player));
+		}
+		if(ID == 2) {
+			return new GuiCarvingStone(player, (TileEntityCarvingStone) world.getBlockTileEntity(x, y, z));
 		}
 		return null;
 	}

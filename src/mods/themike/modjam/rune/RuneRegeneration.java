@@ -21,7 +21,7 @@ public class RuneRegeneration implements IRune {
 
 	@Override
 	public int getUses() {
-		return 2;
+		return 3;
 	}
 
 }

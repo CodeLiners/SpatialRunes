@@ -73,7 +73,7 @@ public class ModJam {
 		LanguageRegistry.instance().addStringLocalization("itemsub.dustSpatial.name", ColorUtils.applyColor(9) + "Spatial Dust");
 		LanguageRegistry.instance().addStringLocalization("itemsub.essence.name", ColorUtils.applyColor(9) + "Crystalline Essence");
 		LanguageRegistry.instance().addStringLocalization("staff.apprentice.name", ColorUtils.applyColor(9) + "Staff of the Apprentice");
-		LanguageRegistry.instance().addStringLocalization("item.papyrusScroll.name", ColorUtils.applyColor(14) + "Papyrus Scroll");
+		LanguageRegistry.instance().addStringLocalization("item.papyrusScroll.name", ColorUtils.applyColor(14) + "Papyrus Scroll (For a later release)");
 		LanguageRegistry.instance().addStringLocalization("itemsub.magegem.name", ColorUtils.applyColor(14) + "Mage Gem");
 		LanguageRegistry.instance().addStringLocalization("staff.mage.name", ColorUtils.applyColor(14) + "Staff of the Mage");
 	}

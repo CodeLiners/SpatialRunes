@@ -7,7 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityCarvingStone extends TileEntity implements IInventory {
 
-	private ItemStack[] inventory = new ItemStack[3];
+	private ItemStack[] inventory = new ItemStack[7];
 	
 	public TileEntityCarvingStone() {
 		
@@ -15,7 +15,7 @@ public class TileEntityCarvingStone extends TileEntity implements IInventory {
 	
 	@Override
 	public int getSizeInventory() {
-		return 3;
+		return 7;
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class TileEntityCarvingStone extends TileEntity implements IInventory {
 
 	@Override
 	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
-		return false;
+		return true;
 	}
 
 }
