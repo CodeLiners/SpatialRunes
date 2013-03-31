@@ -20,28 +20,28 @@ public class GUIHandler implements IGuiHandler {
 		
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		if(ID == 2) {
+			return new ContainerCarvingStone(player, (TileEntityCarvingStone) world.getBlockTileEntity(x, y, z));
+		}
 		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemPapyrus) {
 			return new ContainerPapyrusScroll();
 		}
 		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemStaff) {
 			return new ContainerStaff(player, new InventoryStaff(player));
 		}
-		if(ID == 2) {
-			return new ContainerCarvingStone(player, (TileEntityCarvingStone) world.getBlockTileEntity(x, y, z));
-		}
 		return null;
 	}
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		if(ID == 2) {
+			return new GuiCarvingStone(player, (TileEntityCarvingStone) world.getBlockTileEntity(x, y, z));
+		}
 		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemPapyrus) {
 			return new GuiPapyrusScroll(new ContainerPapyrusScroll());
 		}
 		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemStaff) {
 			return new GuiStaff(player, new InventoryStaff(player));
-		}
-		if(ID == 2) {
-			return new GuiCarvingStone(player, (TileEntityCarvingStone) world.getBlockTileEntity(x, y, z));
 		}
 		return null;
 	}

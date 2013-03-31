@@ -22,4 +22,9 @@ public class RuneBlank implements IRune {
 		return 0;
 	}
 
+	@Override
+	public Object getSacrifice() {
+		return null;
+	}
+
 }

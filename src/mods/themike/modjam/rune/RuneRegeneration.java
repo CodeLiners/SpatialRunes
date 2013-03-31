@@ -1,6 +1,7 @@
 package mods.themike.modjam.rune;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 
 public class RuneRegeneration implements IRune {
 
@@ -22,6 +23,11 @@ public class RuneRegeneration implements IRune {
 	@Override
 	public int getUses() {
 		return 3;
+	}
+
+	@Override
+	public Object getSacrifice() {
+		return Item.rottenFlesh;
 	}
 
 }

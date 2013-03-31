@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 
 public class RuneFire implements IRune {
@@ -35,6 +36,11 @@ public class RuneFire implements IRune {
 	@Override
 	public int getUses() {
 		return 2;
+	}
+
+	@Override
+	public Object getSacrifice() {
+		return Item.flint;
 	}
 
 }

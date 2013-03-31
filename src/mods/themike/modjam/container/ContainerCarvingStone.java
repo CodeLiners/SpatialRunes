@@ -52,11 +52,11 @@ public class ContainerCarvingStone extends Container {
 			ItemStack stackInSlot = slotInQuestion.getStack();
 			stackCopy = stackInSlot.copy();
 			
-			if(slot <= 2) {
+			if(slot <= 6) {
 				if(!this.mergeItemStack(stackInSlot, 1, this.inventorySlots.size(), true)) {
 					return null;
 				}
-			} else if(!this.mergeItemStack(stackInSlot, 0, 2, false)) {
+			} else if(!this.mergeItemStack(stackInSlot, 0, 2, true)) {
 				return null;
 			}
 			if(stackInSlot.stackSize == 0) {
