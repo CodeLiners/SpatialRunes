@@ -1,5 +1,6 @@
 package mods.themike.modjam.container;
 
+import mods.themike.modjam.slot.SlotStaff;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -16,7 +17,7 @@ public class ContainerStaff extends Container {
 		player = par1;
 		inventory = par2;
 		
-		this.addSlotToContainer(new Slot(inventory, 0, 80, 37));
+		this.addSlotToContainer(new SlotStaff(player, inventory, 0, 80, 37));
 		
 		int var3;
 		
