@@ -8,7 +8,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class InventoryStaff implements IInventory {
 	
-	private ItemStack[] inventory = new ItemStack[1];
+	public ItemStack[] inventory = new ItemStack[1];
 
 	EntityPlayer player = null;
 	
@@ -40,6 +40,18 @@ public class InventoryStaff implements IInventory {
 	@Override
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
 		inventory[i] = itemstack;
+		ItemStack staff = player.getHeldItem();
+
+		if(staff != null) {
+			ItemStack rune = getStackInSlot(0);
+			if(rune != null) {
+				System.out.println("Saving...");
+				NBTTagCompound tag = new NBTTagCompound();
+				rune.writeToNBT(tag);
+				staff.getTagCompound().setTag("item", tag);
+				player.inventory.setInventorySlotContents(player.inventory.currentItem, staff);
+			}
+		}
 	}
 
 	@Override

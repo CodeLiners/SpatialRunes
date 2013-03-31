@@ -44,7 +44,9 @@ public class ItemStaff extends ItemMulti {
 	@Override
 	public void getSubItems(int ID, CreativeTabs tabs, List list) {
 		for(int par1 = 0; par1 < subNames.length; par1++) {
-			list.add(new ItemStack(ID, 1, par1));
+			ItemStack stack = new ItemStack(ID, 1, par1);
+			stack.setTagCompound(new NBTTagCompound());
+			list.add(stack);
 		}
 	}
 	
@@ -78,6 +80,7 @@ public class ItemStaff extends ItemMulti {
 		super.onItemRightClick(stack, world, player);
 		ItemStack newStack = stack.copy();
 
+		
 		if(!world.isRemote && !player.isSneaking() && stack.getTagCompound() != null) {
 			ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
 			if(runeStack != null) {

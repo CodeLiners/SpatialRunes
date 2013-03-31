@@ -1,5 +1,6 @@
 package mods.themike.modjam.container;
 
+import mods.themike.modjam.inventory.InventoryStaff;
 import mods.themike.modjam.slot.SlotStaff;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -29,6 +30,16 @@ public class ContainerStaff extends Container {
 		
 		for(var3 = 0; var3 < 9; ++var3) {
 			this.addSlotToContainer(new Slot(player.inventory, var3, 8 + var3 * 18, 142));
+		}
+		
+		ItemStack staff = player.getHeldItem();
+		InventoryStaff staffInv= (InventoryStaff) inventory;
+		if(staff != null) {
+			System.out.println("Loading...");
+
+			if(staff.getTagCompound() != null && staff.getTagCompound().getTag("item") != null) {
+				staffInv.inventory[0] = ItemStack.loadItemStackFromNBT((NBTTagCompound) staff.getTagCompound().getTag("item"));
+			}
 		}
 		
 	}
