@@ -40,6 +40,7 @@ public class InventoryStaff implements IInventory {
 	@Override
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
 		inventory[i] = itemstack;
+		
 		ItemStack staff = player.getHeldItem();
 
 		if(staff != null) {
@@ -91,10 +92,7 @@ public class InventoryStaff implements IInventory {
 
 	@Override
 	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
-		if(itemstack != null && itemstack.getItem() instanceof ItemRune) {
-			return true;
-		}
-		return false;
+		return true;
 	}
 
 }

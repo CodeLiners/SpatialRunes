@@ -23,7 +23,10 @@ public class GuiStaff extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
-		
+		this.mc.renderEngine.bindTexture("/mods/mikejam/textures/gui/staff.png");
+		int x = (this.width - 187) / 2;
+		int y = (this.height - 200) / 2;
+		this.drawTexturedModalRect(x, y, 0, 0, 256, 256);
 	}
 
 }

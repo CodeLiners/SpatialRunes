@@ -76,10 +76,11 @@ public class ItemStaff extends ItemMulti {
 		} else {
 			list.add("Can bind all levels.");
 		}
-		ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
-		if(stack.getTagCompound().getTag("item") != null && runeStack != null) {
-			list.add(ColorUtils.applyColor(14) + LanguageRegistry.instance().getStringLocalization("rune." + RuneRegistry.getrunes()[runeStack.getItemDamage()].getName() + ".name") + ".");
-			list.add(ColorUtils.applyColor(14) + String.valueOf(RuneRegistry.getrunes()[runeStack.getItemDamage()].getUses()) + " uses left.");
+		if(stack.getTagCompound().getTag("item") != null) {
+			ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
+			if(stack.getTagCompound().getTag("item") != null && runeStack != null) {
+				list.add(ColorUtils.applyColor(14) + LanguageRegistry.instance().getStringLocalization("rune." + RuneRegistry.getrunes()[runeStack.getItemDamage()].getName() + ".name") + ".");
+			}
 		}
 	}
 	

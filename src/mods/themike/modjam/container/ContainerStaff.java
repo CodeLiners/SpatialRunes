@@ -18,18 +18,18 @@ public class ContainerStaff extends Container {
 		player = par1;
 		inventory = par2;
 		
-		this.addSlotToContainer(new SlotStaff(player, inventory, 0, 80, 37));
+		this.addSlotToContainer(new SlotStaff(player, inventory, 0, 75, 22));
 		
 		int var3;
 		
 		for(var3 = 0; var3 < 3; ++var3) {
 			for(int var4 = 0; var4 < 9; ++var4) {
-				this.addSlotToContainer(new Slot(player.inventory, var4 + var3 * 9 + 9, 8 + var4 * 18, 84 + var3 * 18));
+				this.addSlotToContainer(new Slot(player.inventory, var4 + var3 * 9 + 9, 8 + var4 * 18 - 5, 84 + var3 * 18 - 17));
 			}
 		}
 		
 		for(var3 = 0; var3 < 9; ++var3) {
-			this.addSlotToContainer(new Slot(player.inventory, var3, 8 + var3 * 18, 142));
+			this.addSlotToContainer(new Slot(player.inventory, var3, 8 + var3 * 18 - 5, 125));
 		}
 		
 		ItemStack staff = player.getHeldItem();

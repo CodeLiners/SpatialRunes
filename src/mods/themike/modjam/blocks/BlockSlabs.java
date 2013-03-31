@@ -23,6 +23,8 @@ public class BlockSlabs extends BlockHalfSlab {
 	public BlockSlabs(int par1) {
 		super(par1, false, Material.rock);
 		this.setCreativeTab(ModJam.tab);
+		this.setResistance(15.0F);
+		this.setHardness(3.0F);
 	}
 	
 	@Override
