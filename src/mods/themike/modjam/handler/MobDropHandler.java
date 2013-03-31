@@ -13,11 +13,10 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 public class MobDropHandler {
 	
 	@ForgeSubscribe
-	public void onSoundLoad(SoundLoadEvent event) {
-		try {
-			event.manager.soundPoolSounds.addSound("mods/mikejam/sounds/sucess.ogg", this.getClass().getResource("/mods/mikejam/sounds/sucess.ogg"));
-		} catch(Exception e) {
-			System.out.println("[Spatial Runes] Failed to load sounds!");
+	public void modDrop(LivingDropsEvent event) {
+		Random rand = new Random();
+		if(event.entityLiving instanceof IMob && rand.nextInt(5) == 2) {
+			event.drops.add(new EntityItem(event.entity.worldObj, event.entity.posX, event.entity.posY + 0.5, event.entity.posZ, new ItemStack(ModJam.item, 1, 0)));
 		}
 	}
 

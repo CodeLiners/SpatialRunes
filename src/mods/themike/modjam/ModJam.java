@@ -2,6 +2,7 @@ package mods.themike.modjam;
 
 import mods.themike.modjam.handler.GUIHandler;
 import mods.themike.modjam.handler.MobDropHandler;
+import mods.themike.modjam.handler.SoundHandler;
 import mods.themike.modjam.items.ItemBlockDecoration;
 import mods.themike.modjam.proxy.IProxy;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
@@ -52,6 +53,8 @@ public class ModJam {
 	public void preInit(FMLPreInitializationEvent event) {
 		
 		MinecraftForge.EVENT_BUS.register(new MobDropHandler());
+		MinecraftForge.EVENT_BUS.register(new SoundHandler());
+		
 		LanguageRegistry.instance().loadLocalization("/mods/mikejam/lang/en_US.xml", "en_US", true);
 		
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
