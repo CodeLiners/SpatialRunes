@@ -16,20 +16,5 @@ public class SlotStaff extends Slot {
 		player = par1;
 		inventory = par1iInventory;
 	}
-	
-	public void onSlotChanged() {
-		System.out.println("Hello Runes, SlotStaff!");
-
-		ItemStack staff = player.getHeldItem();
-		if(staff != null) {
-			ItemStack rune = inventory.getStackInSlot(0);
-			if(rune != null) {
-				NBTTagCompound tag = new NBTTagCompound();
-				rune.writeToNBT(tag);
-				staff.setTagCompound(new NBTTagCompound());
-				staff.getTagCompound().setTag("item", tag);
-			}
-		}
-	}
 
 }

@@ -32,7 +32,7 @@ public class GUIHandler implements IGuiHandler {
 			return new GuiPapyrusScroll(new ContainerPapyrusScroll());
 		}
 		if(player.getHeldItem().getItem() instanceof ItemStaff) {
-			return new GuiStaff(new ContainerStaff(player, new InventoryStaff(player)));
+			return new GuiStaff(player, new InventoryStaff(player));
 		}
 		return null;
 	}
