@@ -1,12 +1,15 @@
 package mods.themike.modjam.items;
 
 import java.util.List;
+import java.util.Random;
 
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.themike.modjam.ModJam;
 import mods.themike.modjam.rune.IRune;
 import mods.themike.modjam.rune.RuneRegistry;
+import mods.themike.modjam.utils.ColorUtils;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -73,6 +76,11 @@ public class ItemStaff extends ItemMulti {
 		} else {
 			list.add("Can bind all levels.");
 		}
+		ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
+		if(stack.getTagCompound().getTag("item") != null && runeStack != null) {
+			list.add(ColorUtils.applyColor(14) + LanguageRegistry.instance().getStringLocalization("rune." + RuneRegistry.getrunes()[runeStack.getItemDamage()].getName() + ".name") + ".");
+			list.add(ColorUtils.applyColor(14) + String.valueOf(RuneRegistry.getrunes()[runeStack.getItemDamage()].getUses()) + " uses left.");
+		}
 	}
 	
 	@Override
@@ -89,9 +97,13 @@ public class ItemStaff extends ItemMulti {
 				rune.onUse(player);
 				int uses = runeStack.getTagCompound().getInteger("uses");
 				if(uses == 1) {
-					stack.setTagCompound(null);
+					NBTTagCompound tag = new NBTTagCompound();
+					newStack.getTagCompound().setTag("item", tag);
 				} else {
 					runeStack.getTagCompound().setInteger("uses", uses - 1);
+					NBTTagCompound tag = new NBTTagCompound();
+					runeStack.writeToNBT(tag);
+					newStack.getTagCompound().setTag("item", tag);
 				}
 			}
 		}

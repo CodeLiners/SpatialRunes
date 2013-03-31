@@ -45,7 +45,6 @@ public class InventoryStaff implements IInventory {
 		if(staff != null) {
 			ItemStack rune = getStackInSlot(0);
 			if(rune != null) {
-				System.out.println("Saving...");
 				NBTTagCompound tag = new NBTTagCompound();
 				rune.writeToNBT(tag);
 				staff.getTagCompound().setTag("item", tag);
