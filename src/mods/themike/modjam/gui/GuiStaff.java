@@ -30,9 +30,17 @@ public class GuiStaff extends GuiContainer {
 	public void onGuiClosed() {
 		super.onGuiClosed();
 		
-		System.out.println("Hello Runes, SlotStaff!");
-
+		if(player.worldObj.isRemote) {
+			System.out.println("Hello Runes, SlotStaff!");
+		}
 		ItemStack staff = player.getHeldItem();
+		if(staff != null) {
+			if(player.worldObj.isRemote) {
+				if(staff.getTagCompound() != null && inventory.getStackInSlot(0) == null) {
+					inventory.setInventorySlotContents(0, ItemStack.loadItemStackFromNBT((NBTTagCompound) staff.getTagCompound().getTag("item")));
+				}
+			}
+		}
 		if(staff != null && player.worldObj.isRemote) {
 			ItemStack rune = inventory.getStackInSlot(0);
 			if(rune != null) {

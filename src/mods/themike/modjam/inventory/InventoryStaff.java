@@ -15,14 +15,6 @@ public class InventoryStaff implements IInventory {
 	public InventoryStaff(EntityPlayer par1) {
 		player = par1;
 		
-		ItemStack staff = player.getHeldItem();
-		if(staff != null) {
-			if(player.worldObj.isRemote) {
-				if(staff.getTagCompound() != null && this.getStackInSlot(0) == null) {
-					setInventorySlotContents(0, ItemStack.loadItemStackFromNBT((NBTTagCompound) staff.getTagCompound().getTag("item")));
-				}
-			}
-		}
 	}
 	
 	@Override
