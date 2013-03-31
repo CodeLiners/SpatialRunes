@@ -91,7 +91,7 @@ public class ItemStaff extends ItemMulti {
 		
 		if(!world.isRemote && !player.isSneaking() && stack.getTagCompound() != null) {
 			ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
-			if(runeStack != null) {
+			if(runeStack != null && player.experience >= RuneRegistry.getrunes()[runeStack.getItemDamage()].getLevel() * 17) {
 				System.out.println("Hello Runes!");
 				IRune rune = RuneRegistry.getrunes()[runeStack.getItemDamage()];
 				rune.onUse(player);
@@ -105,13 +105,17 @@ public class ItemStaff extends ItemMulti {
 					runeStack.writeToNBT(tag);
 					newStack.getTagCompound().setTag("item", tag);
 				}
+			} else if(runeStack != null) {
+				player.sendChatToPlayer(ColorUtils.applyColor(14) + "Not enough XP to use this rune!");
 			}
 		}
 		if(world.isRemote && !player.isSneaking() && stack.getTagCompound() != null) {
 			if(stack.getTagCompound().getTag("item") != null) {
 				ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
-				if(runeStack != null) {
+				if(runeStack != null && player.experience >= RuneRegistry.getrunes()[runeStack.getItemDamage()].getLevel() * 17) {
 					player.playSound("mods.mikejam.sounds.sucess", 1.0F, 1.0F);
+				} else if(runeStack != null) {
+					
 				}
 			}
 		}
