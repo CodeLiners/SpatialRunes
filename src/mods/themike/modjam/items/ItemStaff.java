@@ -88,14 +88,12 @@ public class ItemStaff extends ItemMulti {
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		super.onItemRightClick(stack, world, player);
 		ItemStack newStack = stack.copy();
-
 		
 		if(!world.isRemote && !player.isSneaking() && stack.getTagCompound() != null) {
 			ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
 			if(runeStack != null) {
 				System.out.println("Hello Runes!");
 				IRune rune = RuneRegistry.getrunes()[runeStack.getItemDamage()];
-				player.playSound("mods.mikejam.sounds.sucess", 1.0F, 1.0F);
 				rune.onUse(player);
 				int uses = runeStack.getTagCompound().getInteger("uses");
 				if(uses == 1) {
@@ -106,6 +104,14 @@ public class ItemStaff extends ItemMulti {
 					NBTTagCompound tag = new NBTTagCompound();
 					runeStack.writeToNBT(tag);
 					newStack.getTagCompound().setTag("item", tag);
+				}
+			}
+		}
+		if(world.isRemote && !player.isSneaking() && stack.getTagCompound() != null) {
+			if(stack.getTagCompound().getTag("item") != null) {
+				ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
+				if(runeStack != null) {
+					player.playSound("mods.mikejam.sounds.sucess", 1.0F, 1.0F);
 				}
 			}
 		}
