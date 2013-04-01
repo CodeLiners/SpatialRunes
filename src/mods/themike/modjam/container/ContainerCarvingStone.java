@@ -1,9 +1,13 @@
 package mods.themike.modjam.container;
 
+import mods.themike.modjam.ModJam;
+import mods.themike.modjam.slot.SlotHelper;
+import mods.themike.modjam.slot.SlotRune;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class ContainerCarvingStone extends Container {
@@ -21,9 +25,8 @@ public class ContainerCarvingStone extends Container {
 		this.addSlotToContainer(new Slot(inventory, 4, 141, 15));
 		this.addSlotToContainer(new Slot(inventory, 5, 36, 15));
 		this.addSlotToContainer(new Slot(inventory, 6, 19, 15));
-		this.addSlotToContainer(new Slot(inventory, 2, 92, 38));
-		this.addSlotToContainer(new Slot(inventory, 1, 68, 38));
-
+		this.addSlotToContainer(new SlotRune(new ItemStack(ModJam.runes, 0, 0), inventory, 1, 68, 38));
+		this.addSlotToContainer(new SlotHelper(new ItemStack(Item.dyePowder, 1, 4), inventory, 2, 92, 38));
 		
 		int var3;
 		
@@ -36,6 +39,7 @@ public class ContainerCarvingStone extends Container {
 		for(var3 = 0; var3 < 9; ++var3) {
 			this.addSlotToContainer(new Slot(player.inventory, var3, 8 + var3 * 18, 125));
 		}
+		
 	}
 	
 	@Override

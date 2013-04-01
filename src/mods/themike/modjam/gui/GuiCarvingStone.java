@@ -26,10 +26,6 @@ public class GuiCarvingStone extends GuiContainer {
 	@Override
 	public void drawGuiContainerForegroundLayer(int x, int y) {
 		fontRenderer.drawString("Carving Stone", (xSize - fontRenderer.getStringWidth("Carving Stone")) / 2, -10, 4210752);
-		GL11.glPushMatrix();
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.4F);
-		this.drawTexturedModelRectFromIcon(68, 38, ModJam.runes.getIconFromDamage(0), 16, 16);
-		GL11.glPopMatrix();
 	}
 
 	@Override
