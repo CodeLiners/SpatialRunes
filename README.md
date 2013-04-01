@@ -1,3 +1,8 @@
+A Not-So-Humble Beginning
+======
+
+Many people have asked this, and yes, I will be continuing this after ModJam. It will get tons of new runes, Containers that actually work right, and more. I guess you can consider this "1.0" a Beta or even Aphla, as the best is yet to come.
+
 Thanks!
 ======
 
