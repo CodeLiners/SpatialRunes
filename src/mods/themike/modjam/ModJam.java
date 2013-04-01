@@ -29,6 +29,8 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 // Use the Force, Luke.
 // Thee shall now be dubbed, Spatial Runes!
@@ -57,6 +59,7 @@ public class ModJam {
 	public void preInit(FMLPreInitializationEvent event) {
 		
 		MinecraftForge.EVENT_BUS.register(new MobDropHandler());
+		
 		MinecraftForge.EVENT_BUS.register(new SoundHandler());
 		
 		LanguageRegistry.instance().loadLocalization("/mods/mikejam/lang/en_US.xml", "en_US", true);
