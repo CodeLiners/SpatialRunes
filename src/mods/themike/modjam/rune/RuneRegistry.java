@@ -8,7 +8,8 @@ public class RuneRegistry {
 		new RuneBlank(), 
 		new RuneRegeneration(),
 		new RuneFire(),
-		new RuneProtection()
+		new RuneProtection(),
+		new RunePower()
 	};
 	
 	public static void appendRune(IRune rune) {
