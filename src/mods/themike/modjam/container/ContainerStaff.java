@@ -1,6 +1,8 @@
+
 package mods.themike.modjam.container;
 
 import mods.themike.modjam.inventory.InventoryStaff;
+import mods.themike.modjam.slot.SlotAppr;
 import mods.themike.modjam.slot.SlotStaff;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -10,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class ContainerStaff extends Container {
-	
+					
 	private static IInventory inventory;
 	private static EntityPlayer player;
 	
@@ -18,8 +20,11 @@ public class ContainerStaff extends Container {
 		player = par1;
 		inventory = par2;
 		
-		this.addSlotToContainer(new SlotStaff(player, inventory, 0, 80, 22));
-		
+		if(par1.getHeldItem().getItemDamage() == 0) {
+			this.addSlotToContainer(new SlotAppr(inventory, 0, 80, 22));
+		} else {
+			this.addSlotToContainer(new SlotStaff(player, inventory, 0, 80, 22));
+		}						
 		int var3;
 		
 		for(var3 = 0; var3 < 3; ++var3) {
@@ -35,8 +40,6 @@ public class ContainerStaff extends Container {
 		ItemStack staff = player.getHeldItem();
 		InventoryStaff staffInv= (InventoryStaff) inventory;
 		if(staff != null) {
-			System.out.println("Loading...");
-
 			if(staff.getTagCompound() != null && staff.getTagCompound().getTag("item") != null) {
 				staffInv.inventory[0] = ItemStack.loadItemStackFromNBT((NBTTagCompound) staff.getTagCompound().getTag("item"));
 			}
@@ -64,11 +67,6 @@ public class ContainerStaff extends Container {
 				}
 			} else if(!this.mergeItemStack(stackInSlot, 0, 0, false)) {
 				return null;
-			}
-			if(stackInSlot.stackSize == 0) {
-				slotInQuestion.putStack(null);
-			} else {
-				slotInQuestion.onSlotChanged();
 			}
 			return stackCopy;
 		}

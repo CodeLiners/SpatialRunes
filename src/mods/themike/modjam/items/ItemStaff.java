@@ -92,7 +92,6 @@ public class ItemStaff extends ItemMulti {
 		if(!world.isRemote && !player.isSneaking() && stack.getTagCompound().getTag("item") != null) {
 			ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
 			if(runeStack != null && player.experienceLevel  >= RuneRegistry.getrunes()[runeStack.getItemDamage()].getLevel()) {
-				System.out.println("Hello Runes!");
 				IRune rune = RuneRegistry.getrunes()[runeStack.getItemDamage()];
 				player.addExperienceLevel(- RuneRegistry.getrunes()[runeStack.getItemDamage()].getLevel());
 				rune.onUse(player);

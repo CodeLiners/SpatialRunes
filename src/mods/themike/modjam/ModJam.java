@@ -10,7 +10,11 @@ import mods.themike.modjam.utils.ColorUtils;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -76,6 +80,8 @@ public class ModJam {
 		LanguageRegistry.instance().addStringLocalization("item.papyrusScroll.name", ColorUtils.applyColor(14) + "Papyrus Scroll (For a later release)");
 		LanguageRegistry.instance().addStringLocalization("itemsub.magegem.name", ColorUtils.applyColor(14) + "Mage Gem");
 		LanguageRegistry.instance().addStringLocalization("staff.mage.name", ColorUtils.applyColor(14) + "Staff of the Mage");
+	
+		ChestGenHooks.addItem(ChestGenHooks.PYRAMID_JUNGLE_CHEST, new WeightedRandomChestContent(new ItemStack(this.item, 1, 3), this.item.itemID, 1, 1));
 	}
 	
 	@PostInit
