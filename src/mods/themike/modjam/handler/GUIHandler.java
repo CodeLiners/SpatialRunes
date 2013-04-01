@@ -1,12 +1,15 @@
 package mods.themike.modjam.handler;
 
+import mods.themike.modjam.container.ContainerCarvingStone;
 import mods.themike.modjam.container.ContainerPapyrusScroll;
 import mods.themike.modjam.container.ContainerStaff;
+import mods.themike.modjam.gui.GuiCarvingStone;
 import mods.themike.modjam.gui.GuiPapyrusScroll;
 import mods.themike.modjam.gui.GuiStaff;
 import mods.themike.modjam.inventory.InventoryStaff;
 import mods.themike.modjam.items.ItemPapyrus;
 import mods.themike.modjam.items.ItemStaff;
+import mods.themike.modjam.tile.TileEntityCarvingStone;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -17,10 +20,13 @@ public class GUIHandler implements IGuiHandler {
 		
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		if(player.getHeldItem().getItem() instanceof ItemPapyrus) {
+		if(ID == 2) {
+			return new ContainerCarvingStone(player, (TileEntityCarvingStone) world.getBlockTileEntity(x, y, z));
+		}
+		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemPapyrus) {
 			return new ContainerPapyrusScroll();
 		}
-		if(player.getHeldItem().getItem() instanceof ItemStaff) {
+		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemStaff) {
 			return new ContainerStaff(player, new InventoryStaff(player));
 		}
 		return null;
@@ -28,10 +34,13 @@ public class GUIHandler implements IGuiHandler {
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		if(player.getHeldItem().getItem() instanceof ItemPapyrus) {
+		if(ID == 2) {
+			return new GuiCarvingStone(player, (TileEntityCarvingStone) world.getBlockTileEntity(x, y, z));
+		}
+		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemPapyrus) {
 			return new GuiPapyrusScroll(new ContainerPapyrusScroll());
 		}
-		if(player.getHeldItem().getItem() instanceof ItemStaff) {
+		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemStaff) {
 			return new GuiStaff(player, new InventoryStaff(player));
 		}
 		return null;

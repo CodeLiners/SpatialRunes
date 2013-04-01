@@ -1,6 +1,8 @@
+
 package mods.themike.modjam.container;
 
 import mods.themike.modjam.inventory.InventoryStaff;
+import mods.themike.modjam.slot.SlotAppr;
 import mods.themike.modjam.slot.SlotStaff;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -10,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class ContainerStaff extends Container {
-	
+					
 	private static IInventory inventory;
 	private static EntityPlayer player;
 	
@@ -18,25 +20,26 @@ public class ContainerStaff extends Container {
 		player = par1;
 		inventory = par2;
 		
-		this.addSlotToContainer(new SlotStaff(player, inventory, 0, 75, 22));
-		
+		if(par1.getHeldItem().getItemDamage() == 0) {
+			this.addSlotToContainer(new SlotAppr(inventory, 0, 80, 22));
+		} else {
+			this.addSlotToContainer(new SlotStaff(player, inventory, 0, 80, 22));
+		}						
 		int var3;
 		
 		for(var3 = 0; var3 < 3; ++var3) {
 			for(int var4 = 0; var4 < 9; ++var4) {
-				this.addSlotToContainer(new Slot(player.inventory, var4 + var3 * 9 + 9, 8 + var4 * 18 - 5, 84 + var3 * 18 - 17));
+				this.addSlotToContainer(new Slot(player.inventory, var4 + var3 * 9 + 9, 8 + var4 * 18, 84 + var3 * 18 - 17));
 			}
 		}
 		
 		for(var3 = 0; var3 < 9; ++var3) {
-			this.addSlotToContainer(new Slot(player.inventory, var3, 8 + var3 * 18 - 5, 125));
+			this.addSlotToContainer(new Slot(player.inventory, var3, 8 + var3 * 18, 125));
 		}
 		
 		ItemStack staff = player.getHeldItem();
 		InventoryStaff staffInv= (InventoryStaff) inventory;
 		if(staff != null) {
-			System.out.println("Loading...");
-
 			if(staff.getTagCompound() != null && staff.getTagCompound().getTag("item") != null) {
 				staffInv.inventory[0] = ItemStack.loadItemStackFromNBT((NBTTagCompound) staff.getTagCompound().getTag("item"));
 			}

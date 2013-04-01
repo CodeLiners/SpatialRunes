@@ -9,6 +9,7 @@ import mods.themike.modjam.utils.MultiBlockUtils;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -47,6 +48,15 @@ public class BlockCarvingStone extends BlockContainer {
 	
 	@Override
 	public boolean renderAsNormalBlock() {
+		return false;
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par4, float par5, float par6, float par7) {
+		if(!player.isSneaking()) {
+			player.openGui(ModJam.instance, 2, world, x, y, z);
+			return true;
+		}
 		return false;
 	}
 

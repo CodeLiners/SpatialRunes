@@ -8,6 +8,7 @@
     <entry key="slab.magebrick.name">Magebrick Slab</entry>
     <entry key="rune.blank.name">Uncarved Rune</entry>
     <entry key="rune.regeneration.name">Rune of Regeneration</entry>
+    <entry key="rune.fire.name">Rune of Fire</entry>
     <entry key="itemsub.endRod.name">Endstone Rod</entry>
     <entry key="itemGroup.modJam">Spatial Runes</entry>
 </properties>

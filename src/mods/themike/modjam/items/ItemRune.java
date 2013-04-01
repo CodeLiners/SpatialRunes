@@ -27,7 +27,7 @@ public class ItemRune extends Item {
 		this.hasSubtypes = true;
 		this.setUnlocalizedName("itemRune");
 		this.setCreativeTab(ModJam.tab);
-
+		this.setMaxStackSize(12);
 	}
 	
 	@Override

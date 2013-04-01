@@ -6,7 +6,8 @@ public class RuneRegistry {
 	
 	private static IRune[] runes = new IRune[]{
 		new RuneBlank(), 
-		new RuneRegeneration()
+		new RuneRegeneration(),
+		new RuneFire()
 	};
 	
 	public static void appendRune(IRune rune) {

@@ -12,4 +12,6 @@ public interface IRune {
 	
 	public int getUses();
 	
+	public Object getSacrifice();
+	
 }
