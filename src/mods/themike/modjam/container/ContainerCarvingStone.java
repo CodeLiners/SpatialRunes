@@ -27,8 +27,8 @@ public class ContainerCarvingStone extends Container {
 		this.addSlotToContainer(new SlotReject(inventory, 4, 141, 15));
 		this.addSlotToContainer(new SlotReject(inventory, 5, 36, 15));
 		this.addSlotToContainer(new SlotReject(inventory, 6, 19, 15));
-		this.addSlotToContainer(new SlotRune(new ItemStack(ModJam.runes, 0, 0), inventory, 1, 68, 38));
-		this.addSlotToContainer(new SlotHelper(new ItemStack(Item.dyePowder, 1, 4), inventory, 2, 92, 38));
+		this.addSlotToContainer(new SlotRune(new ItemStack(ModJam.runes, 0, 0), inventory, 1, 69, 39));
+		this.addSlotToContainer(new SlotHelper(new ItemStack(Item.dyePowder, 1, 4), inventory, 2, 91, 39));
 		
 		int var3;
 		
