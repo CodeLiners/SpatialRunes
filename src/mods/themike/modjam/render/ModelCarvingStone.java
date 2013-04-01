@@ -23,8 +23,8 @@ public class ModelCarvingStone extends ModelBase {
     textureHeight = 64;
     
     Shape1 = new ModelRenderer(this, 0, 0);
-    Shape1.addBox(0F, 0F, 0F, 12, 12, 12);
-    Shape1.setRotationPoint(-6F, 12F, -6F);
+    Shape1.addBox(0F, 0F, 0F, 14, 14, 14);
+    Shape1.setRotationPoint(-7F, 10F, -7F);
     Shape1.setTextureSize(64, 64);
     Shape1.mirror = true;
     setRotation(Shape1, 0F, 0F, 0F);

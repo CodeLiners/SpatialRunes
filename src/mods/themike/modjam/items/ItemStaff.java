@@ -107,6 +107,8 @@ public class ItemStaff extends ItemMulti {
 				}
 			} else if(runeStack != null) {
 				player.sendChatToPlayer(ColorUtils.applyColor(14) + "Not enough XP to use this rune!");
+			} else if(runeStack == null){
+				player.sendChatToPlayer(ColorUtils.applyColor(12) + "No Rune selected!");
 			}
 		}
 		if(world.isRemote && !player.isSneaking() && stack.getTagCompound() != null) {

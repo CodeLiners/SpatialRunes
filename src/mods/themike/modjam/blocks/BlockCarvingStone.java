@@ -22,7 +22,7 @@ public class BlockCarvingStone extends BlockContainer {
 		this.setCreativeTab(ModJam.tab);
 		this.setResistance(2.0F);
 		this.setUnlocalizedName("carvingStone");
-		this.setBlockBounds(0.125F, 0F, 0.125F, 0.875F, 0.75F, 0.875F);
+		this.setBlockBounds(0.065F, 0F, 0.065F, 0.935F, 0.875F, 0.935F);
 	}
 
 	@Override
