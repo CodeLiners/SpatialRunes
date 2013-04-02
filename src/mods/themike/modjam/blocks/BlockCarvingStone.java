@@ -37,6 +37,7 @@ public class BlockCarvingStone extends BlockContainer {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public int getRenderType() {
 		return ClientProxy.ID;
 	}
