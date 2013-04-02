@@ -48,6 +48,7 @@ public class InventoryStaff implements IInventory {
 			if(rune != null) {
 				NBTTagCompound tag = new NBTTagCompound();
 				rune.writeToNBT(tag);
+				if (staff.getTagCompound() == null) staff.setTagCompound(new NBTTagCompound());
 				staff.getTagCompound().setTag("item", tag);
 				player.inventory.setInventorySlotContents(player.inventory.currentItem, staff);
 			}
