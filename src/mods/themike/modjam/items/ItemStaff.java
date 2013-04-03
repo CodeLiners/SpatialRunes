@@ -89,6 +89,9 @@ public class ItemStaff extends ItemMulti {
 		super.onItemRightClick(stack, world, player);
 		ItemStack newStack = stack.copy();
 		
+		if(!world.isRemote && !player.isSneaking() && stack.getTagCompound().getTag("item") == null) {
+				player.sendChatToPlayer(ColorUtils.applyColor(12) + "No Rune selected!");
+		}
 		if(!world.isRemote && !player.isSneaking() && stack.getTagCompound().getTag("item") != null) {
 			ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
 			if(runeStack != null && player.experienceLevel  >= RuneRegistry.getrunes()[runeStack.getItemDamage()].getLevel()) {
@@ -107,9 +110,7 @@ public class ItemStaff extends ItemMulti {
 				}
 			} else if(runeStack != null) {
 				player.sendChatToPlayer(ColorUtils.applyColor(14) + "Not enough XP to use this rune!");
-			} else if(runeStack == null){
-				player.sendChatToPlayer(ColorUtils.applyColor(12) + "No Rune selected!");
-			}
+			} 
 		}
 		if(world.isRemote && !player.isSneaking() && stack.getTagCompound() != null) {
 			if(stack.getTagCompound().getTag("item") != null) {
