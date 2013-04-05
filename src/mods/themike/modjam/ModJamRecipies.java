@@ -14,6 +14,8 @@ public class ModJamRecipies {
 
 		GameRegistry.addRecipe(new ItemStack(ModJam.runes, 4, 0), new Object[]{"XX ", "XXX", " XX", 'X', Block.stone});
 		
+		GameRegistry.addRecipe(new ItemStack(ModJam.reaper, 1, 0), new Object[]{" X ", " X ", "ZIZ", 'Z', new ItemStack(ModJam.item, 1, 2), 'I', new ItemStack(ModJam.item, 1, 1), 'X', Item.field_94584_bZ});
+		
 		// GameRegistry.addRecipe(new ItemStack(ModJam.scroll, 1), new Object[]{"I", "X", 'X', Item.paper, 'I', new ItemStack(ModJam.item, 1, 1)});
 
 		ItemStack stack = new ItemStack(ModJam.staff, 1, 0);

@@ -9,7 +9,7 @@ public class RuneProtection implements IRune {
 	
 	@Override
 	public void onUse(EntityPlayer player) {
-		player.addPotionEffect((new PotionEffect(Potion.resistance.getId(), 150, 5)));
+		player.addPotionEffect((new PotionEffect(Potion.resistance.getId(), 150, 20)));
 	}
 
 	@Override

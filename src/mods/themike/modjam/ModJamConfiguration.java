@@ -7,6 +7,7 @@ import mods.themike.modjam.items.ItemMulti;
 import mods.themike.modjam.items.ItemPapyrus;
 import mods.themike.modjam.items.ItemRune;
 import mods.themike.modjam.items.ItemStaff;
+import mods.themike.modjam.items.ToolReaper;
 import net.minecraftforge.common.Configuration;
 
 public class ModJamConfiguration {
@@ -21,7 +22,8 @@ public class ModJamConfiguration {
 		ModJam.runes = new ItemRune(config.getItem("Runes", 5501).getInt(5501));
 		ModJam.scroll = new ItemPapyrus(config.getItem("Papyrus Scroll", 5502).getInt(5502));
 		ModJam.staff = new ItemStaff(config.getItem("Staffs", 5503).getInt(5503));
-
+		ModJam.reaper = new ToolReaper(config.getItem("Reaper", 5504).getInt(5504));
+		
 	}
 	
 }
