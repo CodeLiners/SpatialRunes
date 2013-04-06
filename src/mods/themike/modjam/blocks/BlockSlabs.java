@@ -42,6 +42,11 @@ public class BlockSlabs extends BlockHalfSlab {
 	public String getUnlocalizedName() {
 		return "slab.magebrick";
 	}
+	
+	@Override
+    protected ItemStack createStackedBlock(int par1) {
+        return new ItemStack(ModJam.slabs.blockID, 2, par1 & 7);
+    }
 
 	@Override
 	public String getFullSlabName(int i) {
