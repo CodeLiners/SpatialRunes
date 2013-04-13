@@ -3,6 +3,7 @@ package mods.themike.modjam;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import ljdp.easypacket.EasyPacketDispatcher;
 import mods.themike.modjam.handler.GUIHandler;
 import mods.themike.modjam.handler.MobDropHandler;
 import mods.themike.modjam.handler.SoundHandler;
@@ -10,6 +11,7 @@ import mods.themike.modjam.items.ItemBlockDecoration;
 import mods.themike.modjam.proxy.IProxy;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
 import mods.themike.modjam.utils.ColorUtils;
+import mods.themike.packet.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -38,7 +40,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 // Use the Force, Luke.
 // Thee shall now be dubbed, Spatial Runes!
-@NetworkMod(clientSideRequired = true, serverSideRequired = false)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels=("SpatialRunes"), packetHandler = PacketHandler.class)
 @Mod(modid = "ModJamMagic!", name = "Spatial Runes", version = "1.0.0")
 public class ModJam {
 
@@ -58,7 +60,7 @@ public class ModJam {
 	public static boolean hasAtum = false;
 	
 	public static CreativeTabs tab = new ModJamTab();
-
+	
 	@SidedProxy(clientSide = "mods.themike.modjam.proxy.ClientProxy", serverSide = "mods.themike.modjam.proxy.CommonProxy")
 	public static IProxy proxy;
 	

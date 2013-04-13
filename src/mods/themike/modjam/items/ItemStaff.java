@@ -6,10 +6,15 @@ import java.util.Random;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ljdp.easypacket.EasyPacket;
+import ljdp.easypacket.EasyPacketHandler;
 import mods.themike.modjam.ModJam;
 import mods.themike.modjam.rune.IRune;
 import mods.themike.modjam.rune.RuneRegistry;
 import mods.themike.modjam.utils.ColorUtils;
+import mods.themike.packet.PacketHandler;
+import mods.themike.packet.PacketParticle;
+import mods.themike.packet.PacketSound;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -109,23 +114,24 @@ public class ItemStaff extends ItemMulti {
 					runeStack.writeToNBT(tag);
 					newStack.getTagCompound().setTag("item", tag);
 				}
+				this.sparkle("reddust", player, world, (int) player.posX, (int) player.posY + 1, (int) player.posZ, world.rand);
 			} else if(runeStack != null) {
 				player.sendChatToPlayer(ColorUtils.applyColor(14) + "Not enough XP to use this rune!");
 			} 
 		}
 		if(world.isRemote && !player.isSneaking() && stack.getTagCompound().getTag("item") == null) {
-			player.playSound("mods.mikejam.sounds.failure", 1.0F, 1.0F);
-			this.sparkle("reddust", world, (int) player.posX, (int) player.posY, (int) player.posZ, world.rand);
+			PacketSound sound = new PacketSound("mods.mikejam.sounds.failure", 1.0F, 1.0F);
+			PacketHandler.sound.sendToAllPlayersAround(sound, (int) player.posX, (int) player.posY + 1, (int) player.posZ, 10, player.dimension);
 		}
 		if(world.isRemote && !player.isSneaking() && stack.getTagCompound() != null) {
 			if(stack.getTagCompound().getTag("item") != null) {
 				ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
 				if(runeStack != null && player.experienceLevel  >= RuneRegistry.getrunes()[runeStack.getItemDamage()].getLevel()) {
-					player.playSound("mods.mikejam.sounds.sucess", 1.0F, 1.0F);
-					this.sparkle("portal", world, (int) player.posX, (int) player.posY, (int) player.posZ, world.rand);
+					PacketSound sound = new PacketSound("mods.mikejam.sounds.sucess", 1.0F, 1.0F);
+					PacketHandler.sound.sendToAllPlayersAround(sound, (int) player.posX, (int) player.posY + 1, (int) player.posZ, 10, player.dimension);
 				} else if(runeStack != null) {
-					player.playSound("mods.mikejam.sounds.failure", 1.0F, 1.0F);
-					this.sparkle("reddust", world, (int) player.posX, (int) player.posY, (int) player.posZ, world.rand);
+					PacketSound sound = new PacketSound("mods.mikejam.sounds.failure", 1.0F, 1.0F);
+					PacketHandler.sound.sendToAllPlayersAround(sound, (int) player.posX, (int) player.posY + 1, (int) player.posZ, 10, player.dimension);
 				}
 			}
 		}
@@ -135,16 +141,25 @@ public class ItemStaff extends ItemMulti {
 		return newStack;
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public void sparkle(String type, World world, int x, int y, int z, Random rand) {
+	public void sparkle(String type, EntityPlayer player, World world, int x, int y, int z, Random rand) {
         double riser = 0.01D;
-                    
-        double x2 = x + rand.nextDouble(),
-        y2 = y + rand.nextDouble(),
-        z2 = z + rand.nextDouble();
         
-        if (((x2 < (x - 0.3D)) || x2 > (x + 1.3D)) || (y2 < 0.3D || y2 > (y + 1.0D)) || (z2 < (z - 0.3D) || z2 > (z + 1.0D)))
-            world.spawnParticle(type, x2, y2, z2, 0.0D, 0.0D, 0.0D);
+        for(int var1 = 0; var1 != 6; var1++) {
+            double x2 = x,
+                    y2 = y + rand.nextDouble(),
+                    z2 = z;
+            
+            if(rand.nextInt(1) == 0) {
+            	x2 = x - rand.nextDouble();
+            	y2 = y + rand.nextDouble();
+            } else {
+            	x2 = x + rand.nextDouble();
+            	y2 = y - rand.nextDouble();
+            }
+            
+            PacketParticle part = new PacketParticle(type, x2, y2, z2, rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
+            PacketHandler.particle.sendToAllPlayersInDimension(part, player.dimension);
+        }
 	}
 
 }
