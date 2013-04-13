@@ -10,7 +10,7 @@ Requires MCore, found at https://github.com/TrainerGuy22/MCore/
 Thanks!
 ======
 
-P_U_R_E - Some random person off the internet who makes a nice parchment and was nice enough to give it away. <br>
+ > P_U_R_E - Some random person off the internet who makes a nice parchment and was nice enough to give it away. <br>
 Timbre - http://www.freesound.org/people/Timbre/sounds/75712/ <br>
 ljdp - EasyPacket, great system, now modified as part of MCore. Hope to see you back into modding again soon! <br>
 Vswe - Allowing me to use his code as a base for ColorUtils, thanks!
