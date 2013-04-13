@@ -29,6 +29,23 @@ public class InventoryStaff implements IInventory {
 
 	@Override
 	public ItemStack decrStackSize(int i, int j) {
+		
+		clear();
+		
+		if(inventory[i] != null){
+			if(inventory[i].stackSize <= j){
+				ItemStack invStack = inventory[i].copy();
+				inventory[i] = null;
+				return invStack;
+			}else{
+				ItemStack invStack1 = inventory[i].splitStack(j);
+				if(inventory[i].stackSize == 0){
+					inventory[i] = null;
+				}
+				return invStack1;
+			}
+		}
+		
 		return null;
 	}
 
@@ -40,6 +57,10 @@ public class InventoryStaff implements IInventory {
 	@Override
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
 		inventory[i] = itemstack;
+		save();
+	}
+	
+	public void save() {
 		
 		ItemStack staff = player.getHeldItem();
 
@@ -51,8 +72,21 @@ public class InventoryStaff implements IInventory {
 				if (staff.getTagCompound() == null) staff.setTagCompound(new NBTTagCompound());
 				staff.getTagCompound().setTag("item", tag);
 				player.inventory.setInventorySlotContents(player.inventory.currentItem, staff);
+			} else {
+				staff.setTagCompound(new NBTTagCompound());
 			}
 		}
+		
+	}
+	
+	public void clear() {
+		System.out.println("Clearing");
+		ItemStack staff = player.getHeldItem();
+
+		if(staff != null) {
+			staff.setTagCompound(new NBTTagCompound());
+		}
+		
 	}
 
 	@Override
@@ -72,7 +106,7 @@ public class InventoryStaff implements IInventory {
 
 	@Override
 	public void onInventoryChanged() {
-
+		
 	}
 
 	@Override

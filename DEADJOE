@@ -1,0 +1,31 @@
+
+*** These modified files were found in JOE when it aborted on Sat Apr  6 17:46:35 2013
+*** JOE was aborted by UNIX signal 15
+
+*** File '.git/COMMIT_EDITMSG'
+Some work.
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is ahead of 'origin/master' by 6 commits.
+#
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   res/mods/mikejam/textures/items/reaper.png
+#	modified:   src/mods/themike/modjam/ModJamRecipies.java
+#	modified:   src/mods/themike/modjam/blocks/BlockSlabs.java
+#
+
+*** File '(Unnamed)'
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG
+.git/COMMIT_EDITMSG

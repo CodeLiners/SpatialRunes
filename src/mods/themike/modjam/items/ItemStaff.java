@@ -10,6 +10,7 @@ import mods.themike.modjam.ModJam;
 import mods.themike.modjam.rune.IRune;
 import mods.themike.modjam.rune.RuneRegistry;
 import mods.themike.modjam.utils.ColorUtils;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -112,13 +113,19 @@ public class ItemStaff extends ItemMulti {
 				player.sendChatToPlayer(ColorUtils.applyColor(14) + "Not enough XP to use this rune!");
 			} 
 		}
+		if(world.isRemote && !player.isSneaking() && stack.getTagCompound().getTag("item") == null) {
+			player.playSound("mods.mikejam.sounds.failure", 1.0F, 1.0F);
+			this.sparkle("reddust", world, (int) player.posX, (int) player.posY, (int) player.posZ, world.rand);
+		}
 		if(world.isRemote && !player.isSneaking() && stack.getTagCompound() != null) {
 			if(stack.getTagCompound().getTag("item") != null) {
 				ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
 				if(runeStack != null && player.experienceLevel  >= RuneRegistry.getrunes()[runeStack.getItemDamage()].getLevel()) {
 					player.playSound("mods.mikejam.sounds.sucess", 1.0F, 1.0F);
+					this.sparkle("portal", world, (int) player.posX, (int) player.posY, (int) player.posZ, world.rand);
 				} else if(runeStack != null) {
 					player.playSound("mods.mikejam.sounds.failure", 1.0F, 1.0F);
+					this.sparkle("reddust", world, (int) player.posX, (int) player.posY, (int) player.posZ, world.rand);
 				}
 			}
 		}
@@ -126,6 +133,18 @@ public class ItemStaff extends ItemMulti {
 			player.openGui(ModJam.instance, 1, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 		}
 		return newStack;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void sparkle(String type, World world, int x, int y, int z, Random rand) {
+        double riser = 0.01D;
+                    
+        double x2 = x + rand.nextDouble(),
+        y2 = y + rand.nextDouble(),
+        z2 = z + rand.nextDouble();
+        
+        if (((x2 < (x - 0.3D)) || x2 > (x + 1.3D)) || (y2 < 0.3D || y2 > (y + 1.0D)) || (z2 < (z - 0.3D) || z2 > (z + 1.0D)))
+            world.spawnParticle(type, x2, y2, z2, 0.0D, 0.0D, 0.0D);
 	}
 
 }

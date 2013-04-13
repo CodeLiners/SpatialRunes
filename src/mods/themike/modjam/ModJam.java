@@ -1,5 +1,8 @@
 package mods.themike.modjam;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import mods.themike.modjam.handler.GUIHandler;
 import mods.themike.modjam.handler.MobDropHandler;
 import mods.themike.modjam.handler.SoundHandler;
@@ -16,6 +19,7 @@ import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -50,6 +54,8 @@ public class ModJam {
 	public static Block carvingStone;
 	public static Block decoration;
 	public static Block slabs;
+	
+	public static boolean hasAtum = false;
 	
 	public static CreativeTabs tab = new ModJamTab();
 
@@ -92,6 +98,10 @@ public class ModJam {
 	
 	@PostInit
 	public void postInit(FMLPostInitializationEvent event) {
+		
+		if(Loader.isModLoaded("Atum")) {
+			hasAtum = true;
+		}
 		
 	}
 	
