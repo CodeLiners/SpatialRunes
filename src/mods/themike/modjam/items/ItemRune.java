@@ -2,6 +2,8 @@ package mods.themike.modjam.items;
 
 import java.util.List;
 
+import themike.core.render.StringColor;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.themike.modjam.ModJam;
@@ -9,7 +11,6 @@ import mods.themike.modjam.rune.IRune;
 import mods.themike.modjam.rune.RuneBlank;
 import mods.themike.modjam.rune.RuneRegeneration;
 import mods.themike.modjam.rune.RuneRegistry;
-import mods.themike.modjam.utils.ColorUtils;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -79,9 +80,9 @@ public class ItemRune extends Item {
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		if(stack.getTagCompound() != null && stack.getItemDamage() != 0 && RuneRegistry.getrunes()[stack.getItemDamage()] != null) {
-			list.add(ColorUtils.applyColor(9) + "Level " + String.valueOf(RuneRegistry.getrunes()[stack.getItemDamage()].getLevel()) + " Rune.");
+			list.add(StringColor.applyColor(9) + "Level " + String.valueOf(RuneRegistry.getrunes()[stack.getItemDamage()].getLevel()) + " Rune.");
 			int uses = stack.getTagCompound().getInteger("uses");
-			list.add(ColorUtils.applyColor(14) + String.valueOf(uses) + " uses left.");
+			list.add(StringColor.applyColor(14) + String.valueOf(uses) + " uses left.");
 		}
 	}
 

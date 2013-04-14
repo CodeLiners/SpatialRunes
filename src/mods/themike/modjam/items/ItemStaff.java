@@ -3,6 +3,10 @@ package mods.themike.modjam.items;
 import java.util.List;
 import java.util.Random;
 
+import themike.core.packet.PacketParticle;
+import themike.core.packet.PacketSound;
+import themike.core.render.StringColor;
+
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -10,11 +14,8 @@ import ljdp.easypacket.EasyPacket;
 import ljdp.easypacket.EasyPacketHandler;
 import mods.themike.modjam.ModJam;
 import mods.themike.modjam.packet.PacketHandler;
-import mods.themike.modjam.packet.PacketParticle;
-import mods.themike.modjam.packet.PacketSound;
 import mods.themike.modjam.rune.IRune;
 import mods.themike.modjam.rune.RuneRegistry;
-import mods.themike.modjam.utils.ColorUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -85,7 +86,7 @@ public class ItemStaff extends ItemMulti {
 		if(stack.getTagCompound().getTag("item") != null) {
 			ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
 			if(stack.getTagCompound().getTag("item") != null && runeStack != null) {
-				list.add(ColorUtils.applyColor(14) + LanguageRegistry.instance().getStringLocalization("rune." + RuneRegistry.getrunes()[runeStack.getItemDamage()].getName() + ".name") + ".");
+				list.add(StringColor.applyColor(14) + LanguageRegistry.instance().getStringLocalization("rune." + RuneRegistry.getrunes()[runeStack.getItemDamage()].getName() + ".name") + ".");
 			}
 		}
 	}
@@ -96,7 +97,7 @@ public class ItemStaff extends ItemMulti {
 		ItemStack newStack = stack.copy();
 		
 		if(!world.isRemote && !player.isSneaking() && stack.getTagCompound().getTag("item") == null) {
-				player.sendChatToPlayer(ColorUtils.applyColor(12) + "No Rune selected!");
+				player.sendChatToPlayer(StringColor.applyColor(12) + "No Rune selected!");
 		}
 		if(!world.isRemote && !player.isSneaking() && stack.getTagCompound().getTag("item") != null) {
 			ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
@@ -116,7 +117,7 @@ public class ItemStaff extends ItemMulti {
 				}
 				this.sparkle("reddust", player, world, (int) player.posX, (int) player.posY + 1, (int) player.posZ, world.rand);
 			} else if(runeStack != null) {
-				player.sendChatToPlayer(ColorUtils.applyColor(14) + "Not enough XP to use this rune!");
+				player.sendChatToPlayer(StringColor.applyColor(14) + "Not enough XP to use this rune!");
 			} 
 		}
 		if(world.isRemote && !player.isSneaking() && stack.getTagCompound().getTag("item") == null) {

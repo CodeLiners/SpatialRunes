@@ -3,6 +3,8 @@ package mods.themike.modjam;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import themike.core.render.StringColor;
+
 import ljdp.easypacket.EasyPacketDispatcher;
 import mods.themike.modjam.handler.GUIHandler;
 import mods.themike.modjam.handler.MobDropHandler;
@@ -11,7 +13,6 @@ import mods.themike.modjam.items.ItemBlockDecoration;
 import mods.themike.modjam.packet.PacketHandler;
 import mods.themike.modjam.proxy.IProxy;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
-import mods.themike.modjam.utils.ColorUtils;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -57,6 +58,9 @@ public class ModJam {
 	public static Block decoration;
 	public static Block slabs;
 	
+	public static Block ghost;
+	public static Block lamp;
+	
 	public static boolean hasAtum = false;
 	
 	public static CreativeTabs tab = new ModJamTab();
@@ -85,15 +89,17 @@ public class ModJam {
 		GameRegistry.registerBlock(carvingStone, "Carving Stone");
 		GameRegistry.registerBlock(decoration, ItemBlockDecoration.class, "Decoration");
 		GameRegistry.registerBlock(slabs, "Slabs");
+		GameRegistry.registerBlock(ghost, "Ghost Block");
+		GameRegistry.registerBlock(lamp, "Magebrick Lamp");
 		GameRegistry.registerTileEntity(TileEntityCarvingStone.class, "Carving Stone");
 		
-		LanguageRegistry.instance().addStringLocalization("itemsub.dustSpatial.name", ColorUtils.applyColor(9) + "Spatial Dust");
-		LanguageRegistry.instance().addStringLocalization("itemsub.essence.name", ColorUtils.applyColor(9) + "Crystalline Essence");
-		LanguageRegistry.instance().addStringLocalization("staff.apprentice.name", ColorUtils.applyColor(9) + "Staff of the Apprentice");
-		LanguageRegistry.instance().addStringLocalization("item.reaper.name", ColorUtils.applyColor(9) + "Reaper Blade");
-		LanguageRegistry.instance().addStringLocalization("item.papyrusScroll.name", ColorUtils.applyColor(14) + "Papyrus Scroll (For a later release)");
-		LanguageRegistry.instance().addStringLocalization("itemsub.magegem.name", ColorUtils.applyColor(14) + "Mage Gem");
-		LanguageRegistry.instance().addStringLocalization("staff.mage.name", ColorUtils.applyColor(14) + "Staff of the Mage");
+		LanguageRegistry.instance().addStringLocalization("itemsub.dustSpatial.name", StringColor.applyColor(9) + "Spatial Dust");
+		LanguageRegistry.instance().addStringLocalization("itemsub.essence.name", StringColor.applyColor(9) + "Crystalline Essence");
+		LanguageRegistry.instance().addStringLocalization("staff.apprentice.name", StringColor.applyColor(9) + "Staff of the Apprentice");
+		LanguageRegistry.instance().addStringLocalization("item.reaper.name", StringColor.applyColor(9) + "Reaper Blade");
+		LanguageRegistry.instance().addStringLocalization("item.papyrusScroll.name", StringColor.applyColor(14) + "Papyrus Scroll (For a later release)");
+		LanguageRegistry.instance().addStringLocalization("itemsub.magegem.name", StringColor.applyColor(14) + "Mage Gem");
+		LanguageRegistry.instance().addStringLocalization("staff.mage.name", StringColor.applyColor(14) + "Staff of the Mage");
 	
 		ChestGenHooks.addItem(ChestGenHooks.PYRAMID_JUNGLE_CHEST, new WeightedRandomChestContent(new ItemStack(this.item, 1, 3), this.item.itemID, 1, 1));
 	}

@@ -15,7 +15,6 @@ public class InventoryStaff implements IInventory {
 	
 	public InventoryStaff(EntityPlayer par1) {
 		player = par1;
-		
 	}
 	
 	@Override
@@ -65,7 +64,7 @@ public class InventoryStaff implements IInventory {
 		
 		ItemStack staff = player.getHeldItem();
 
-		if(staff != null) {
+		if(!player.worldObj.isRemote && staff != null) {
 			ItemStack rune = getStackInSlot(0);
 			if(rune != null) {
 				NBTTagCompound tag = new NBTTagCompound();
@@ -84,7 +83,7 @@ public class InventoryStaff implements IInventory {
 		System.out.println("Clearing");
 		ItemStack staff = player.getHeldItem();
 
-		if(staff != null && staff.getItem() instanceof ItemStaff) {
+		if(!player.worldObj.isRemote && staff != null) {
 			staff.setTagCompound(new NBTTagCompound());
 		}
 		

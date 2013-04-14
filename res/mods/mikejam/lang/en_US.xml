@@ -2,6 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties version="1.0">
     <entry key="tile.carvingStone.name">Carving Stone</entry>
+    <entry key="tile.magebrickLamp.name">Magebrick Lamp</entry>
     <entry key="blocksub.magebrick.name">Magebrick</entry>
     <entry key="blocksub.endbrick.name">Endstone Brick</entry>
     <entry key="blocksub.endchiseled.name">Chiseled Endstone Brick</entry>

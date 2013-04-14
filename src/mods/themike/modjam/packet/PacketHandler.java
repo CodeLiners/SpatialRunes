@@ -1,5 +1,7 @@
 package mods.themike.modjam.packet;
 
+import themike.core.packet.PacketParticle;
+import themike.core.packet.PacketSound;
 import ljdp.easypacket.EasyPacketDispatcher;
 import ljdp.easypacket.EasyPacketHandler;
 import mods.themike.modjam.ModJam;
