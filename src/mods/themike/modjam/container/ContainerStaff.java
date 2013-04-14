@@ -1,6 +1,7 @@
 
 package mods.themike.modjam.container;
 
+import mods.themike.modjam.ModJam;
 import mods.themike.modjam.inventory.InventoryStaff;
 import mods.themike.modjam.slot.SlotAppr;
 import mods.themike.modjam.slot.SlotStaff;
@@ -54,21 +55,27 @@ public class ContainerStaff extends Container {
 	
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-		Slot slotInQuestion = (Slot) this.inventorySlots.get(slot);
-		ItemStack stackCopy = null;
-		
-		if(slotInQuestion != null && slotInQuestion.getHasStack()) {
-			ItemStack stackInSlot = slotInQuestion.getStack();
-			stackCopy = stackInSlot.copy();
-			
-			if(slot == 0) {
-				if(!this.mergeItemStack(stackInSlot, 1, this.inventorySlots.size(), true)) {
+		Slot slotObject = (Slot) inventorySlots.get(slot);
+		if(slotObject != null && slotObject.getHasStack()) {
+			ItemStack stackInSlot = slotObject.getStack();
+			ItemStack stack = stackInSlot.copy();
+			if(slot <= 1) {
+				if(!mergeItemStack(stackInSlot, 1, inventorySlots.size(), true))
 					return null;
-				}
-			} else if(!this.mergeItemStack(stackInSlot, 0, 0, false)) {
+			} else if(slot > 0 && stack.itemID == ModJam.runes.itemID && !getSlot(0).getHasStack()) {
+				ItemStack copy = slotObject.decrStackSize(1);
+				getSlot(0).putStack(copy);
+				return null;
+			} else {
 				return null;
 			}
-			return stackCopy;
+
+			if(stackInSlot.stackSize == 0)
+				slotObject.putStack(null);
+			else
+				slotObject.onSlotChanged();
+
+			return stack;
 		}
 		return null;
 	}

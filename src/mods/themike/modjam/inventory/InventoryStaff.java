@@ -1,6 +1,7 @@
 package mods.themike.modjam.inventory;
 
 import mods.themike.modjam.items.ItemRune;
+import mods.themike.modjam.items.ItemStaff;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -83,7 +84,7 @@ public class InventoryStaff implements IInventory {
 		System.out.println("Clearing");
 		ItemStack staff = player.getHeldItem();
 
-		if(staff != null) {
+		if(staff != null && staff.getItem() instanceof ItemStaff) {
 			staff.setTagCompound(new NBTTagCompound());
 		}
 		

@@ -1,4 +1,4 @@
-package mods.themike.packet;
+package mods.themike.modjam.packet;
 
 import java.io.DataInputStream;
 
@@ -10,27 +10,43 @@ import cpw.mods.fml.relauncher.Side;
 import ljdp.easypacket.EasyPacket;
 import ljdp.easypacket.EasyPacketData;
 
-public class PacketSound extends EasyPacket {
+public class PacketParticle extends EasyPacket {
 	
 	@EasyPacketData
 	public String name;
 	
 	@EasyPacketData
-	public float volume;
+	public double x;
 	
 	@EasyPacketData
-	public float pitch;
-	
-	public PacketSound(String par1, float par2, float par3) {
-		name = par1;
-		volume = par2;
-		pitch = par3;
+	public double y;
+
+	@EasyPacketData
+	public double z;
+
+	@EasyPacketData
+	public double velX;
+
+	@EasyPacketData
+	public double velY;
+
+	@EasyPacketData
+	public double velZ;
+
+	public PacketParticle(String par1, double par2, double par3, double par4, double par5, double par6, double par7) {
+		this.name = par1;
+		this.x = par2;
+		this.y = par3;
+		this.z = par4;
+		this.velX = par5;
+		this.velY = par6;
+		this.velZ = par7;
 	}
 	
-	public PacketSound() {
+	public PacketParticle() {
 		super();
 	}
-
+	
 	@Override
 	public boolean isChunkDataPacket() {
 		return false;
@@ -40,7 +56,7 @@ public class PacketSound extends EasyPacket {
 	public void onReceive(DataInputStream data, Player player) {
 		if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
 			EntityPlayer ent = (EntityPlayer) player;
-			ent.playSound(name, volume, pitch);
+			ent.worldObj.spawnParticle(name, x, y, z, velX, velY, velZ);
 		}
 	}
 

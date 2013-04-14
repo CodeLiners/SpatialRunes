@@ -1,4 +1,4 @@
-package mods.themike.packet;
+package mods.themike.modjam.packet;
 
 import ljdp.easypacket.EasyPacketDispatcher;
 import ljdp.easypacket.EasyPacketHandler;
