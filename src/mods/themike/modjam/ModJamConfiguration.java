@@ -29,6 +29,8 @@ public class ModJamConfiguration {
 		ModJam.staff = new ItemStaff(config.getItem("Staffs", 5503).getInt(5503));
 		ModJam.reaper = new ToolReaper(config.getItem("Reaper", 5504).getInt(5504));
 		
+		config.save();
+		
 	}
 	
 }
