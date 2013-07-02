@@ -4,7 +4,6 @@ import mods.themike.modjam.ModJam;
 import mods.themike.modjam.slot.SlotHelper;
 import mods.themike.modjam.slot.SlotReject;
 import mods.themike.modjam.slot.SlotRune;
-import mods.themike.modjam.tile.TileEntityCarvingStone;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -23,12 +22,12 @@ public class ContainerCarvingStone extends Container {
 		inventory = par2;
 		
 		this.addSlotToContainer(new Slot(inventory, 0, 80, 15));
+        this.addSlotToContainer(new SlotRune(new ItemStack(ModJam.runes, 0, 0), inventory, 1, 69, 39));
+        this.addSlotToContainer(new SlotHelper(new ItemStack(Item.dyePowder, 1, 4), inventory, 2, 91, 39));
 		this.addSlotToContainer(new SlotReject(inventory, 3, 124, 15));
 		this.addSlotToContainer(new SlotReject(inventory, 4, 141, 15));
 		this.addSlotToContainer(new SlotReject(inventory, 5, 36, 15));
 		this.addSlotToContainer(new SlotReject(inventory, 6, 19, 15));
-		this.addSlotToContainer(new SlotRune(new ItemStack(ModJam.runes, 0, 0), inventory, 1, 69, 39));
-		this.addSlotToContainer(new SlotHelper(new ItemStack(Item.dyePowder, 1, 4), inventory, 2, 91, 39));
 		
 		int var3;
 		
@@ -48,41 +47,90 @@ public class ContainerCarvingStone extends Container {
 	public boolean canInteractWith(EntityPlayer entityplayer) {
 		return true;
 	}
-	
-	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-		Slot slotInQuestion = (Slot) this.inventorySlots.get(slot);
-		ItemStack stackCopy = null;
-		
-		if(slotInQuestion != null && slotInQuestion.getHasStack()) {
-			ItemStack stackInSlot = slotInQuestion.getStack();
-			stackCopy = stackInSlot.copy();
-			
-			if(slot <= 6) {
-				if(!this.mergeItemStack(stackInSlot, 1, this.inventorySlots.size(), true)) {
-					return null;
-				}
-			} else if(!this.merge(stackInSlot, 0, 2)) {
-				return null;
-			}
-			if(stackInSlot.stackSize == 0) {
-				slotInQuestion.putStack(null);
-			} else {
-				slotInQuestion.onSlotChanged();
-			}
-			return stackCopy;
-		}
-		return null;
-	}
-	
-	public boolean merge(ItemStack stack, int par1, int par2) {
-		for(int var1 = par1; var1 <= par2 && var1 >= par1; var1++) {
-			if(inventory.getStackInSlot(var1) == null) {
-				inventory.setInventorySlotContents(var1, stack);
-				return true;
-			}
-		}
-		return false;
-	}
+
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
+        Slot slotObject = (Slot) inventorySlots.get(slot);
+        if(slotObject != null && slotObject.getHasStack()) {
+            ItemStack stackInSlot = slotObject.getStack();
+            ItemStack stack = stackInSlot.copy();
+            if(slot <= 6) {
+                if(!mergeItemStack(stackInSlot, 7, inventorySlots.size(), true))
+                    return null;
+            } else if(slot > 6) {
+                if(stack.itemID == ModJam.runes.itemID && stack.getItemDamage() == 0) {
+                    if(getSlot(1).getHasStack()) {
+                        ItemStack newStack = getSlot(1).getStack().copy();
+                        if(getSlot(1).getStack().stackSize + stack.stackSize <= getSlot(1).getStack().getMaxStackSize()) {
+                            newStack.stackSize = newStack.stackSize + stack.copy().stackSize;
+                            getSlot(1).putStack(newStack);
+
+                            return null;
+                        } else {
+                            ItemStack returnStack = stack.copy();
+                            newStack.stackSize = newStack.getMaxStackSize();
+                            returnStack.stackSize = returnStack.stackSize - (newStack.getMaxStackSize() - newStack.stackSize);
+                            return returnStack;
+                        }
+                    } else {
+                        getSlot(1).putStack(stack);
+                        return null;
+                    }
+                } else if(stack.itemID == Item.dyePowder.itemID && stack.getItemDamage() == 4 && !getSlot(2).getHasStack()) {
+                    if(getSlot(2).getHasStack()) {
+                        ItemStack newStack = getSlot(2).getStack().copy();
+                        if(getSlot(2).getStack().stackSize + stack.stackSize <= getSlot(2).getStack().getMaxStackSize()) {
+                            newStack.stackSize = newStack.stackSize + stack.copy().stackSize;
+                            getSlot(2).putStack(newStack);
+
+                            return null;
+                        } else {
+                            ItemStack returnStack = stack.copy();
+                            newStack.stackSize = newStack.getMaxStackSize();
+                            returnStack.stackSize = returnStack.stackSize - (newStack.getMaxStackSize() - newStack.stackSize);
+                            return returnStack;
+                        }
+                    } else {
+                        getSlot(2).putStack(stack);
+                        return null;
+                    }
+                } else {
+                    if(getSlot(0).getHasStack()) {
+                        if(getSlot(0).getStack().itemID == stack.itemID && getSlot(0).getStack().getItemDamage() == stack.getItemDamage()) {
+                            ItemStack newStack = getSlot(0).getStack().copy();
+                            if(getSlot(0).getStack().stackSize + stack.stackSize <= getSlot(0).getStack().getMaxStackSize()) {
+                                newStack.stackSize = newStack.stackSize + stack.copy().stackSize;
+                                getSlot(0).putStack(newStack);
+
+                                return null;
+                            } else {
+                                ItemStack returnStack = stack.copy();
+                                newStack.stackSize = newStack.getMaxStackSize();
+                                returnStack.stackSize = returnStack.stackSize - (newStack.getMaxStackSize() - newStack.stackSize);
+                                return returnStack;
+                            }
+                        }
+                        return stack;
+                    } else {
+                        getSlot(0).putStack(stack);
+                        return null;
+                    }
+                }
+                ItemStack copy = slotObject.decrStackSize(1);
+                getSlot(0).putStack(copy);
+                return null;
+            } else {
+                return null;
+            }
+
+            if(stackInSlot.stackSize == 0)
+                slotObject.putStack(null);
+            else
+                slotObject.onSlotChanged();
+
+            return stack;
+        }
+        return null;
+    }
 
 }

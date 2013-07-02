@@ -26,8 +26,8 @@ public class ToolReaper extends ItemSword {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void updateIcons(IconRegister register) {
-        this.iconIndex = register.registerIcon("mikejam:reaper");
+    public void registerIcons(IconRegister register) {
+        this.itemIcon = register.registerIcon("mikejam:reaper");
     }
     
     @Override

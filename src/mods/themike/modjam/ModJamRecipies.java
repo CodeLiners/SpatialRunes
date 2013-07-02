@@ -14,7 +14,7 @@ public class ModJamRecipies {
 
 		GameRegistry.addRecipe(new ItemStack(ModJam.runes, 4, 0), new Object[]{"XX ", "XXX", " XX", 'X', Block.stone});
 		
-		GameRegistry.addRecipe(new ItemStack(ModJam.reaper, 1, 0), new Object[]{"  X", "ZX ", "IZ ", 'Z', new ItemStack(ModJam.item, 1, 2), 'I', new ItemStack(ModJam.item, 1, 1), 'X', Item.field_94584_bZ});
+		GameRegistry.addRecipe(new ItemStack(ModJam.reaper, 1, 0), new Object[]{"  X", "ZX ", "IZ ", 'Z', new ItemStack(ModJam.item, 1, 2), 'I', new ItemStack(ModJam.item, 1, 1), 'X', Item.netherrackBrick});
 		
 		// GameRegistry.addRecipe(new ItemStack(ModJam.scroll, 1), new Object[]{"I", "X", 'X', Item.paper, 'I', new ItemStack(ModJam.item, 1, 1)});
 
@@ -33,7 +33,7 @@ public class ModJamRecipies {
 		GameRegistry.addRecipe(new ItemStack(ModJam.decoration, 4, 1), new Object[]{"XX", "XX", 'X', Block.whiteStone});
 		GameRegistry.addRecipe(new ItemStack(ModJam.decoration, 4, 2), new Object[]{"XX", "XX", 'X', new ItemStack(ModJam.decoration, 12, 1)});
 		
-		GameRegistry.addRecipe(new ItemStack(ModJam.slabs, 6), new Object[]{"XXX", 'X', new ItemStack(ModJam.decoration, 1, 0)});
+		GameRegistry.addRecipe(new ItemStack(ModJam.mageSlab, 6), new Object[]{"XXX", 'X', new ItemStack(ModJam.decoration, 1, 0)});
 	}
 
 }

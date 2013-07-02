@@ -2,14 +2,10 @@ package mods.themike.modjam.items;
 
 import java.util.List;
 
-import themike.core.render.StringColor;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.themike.modjam.ModJam;
 import mods.themike.modjam.rune.IRune;
-import mods.themike.modjam.rune.RuneBlank;
-import mods.themike.modjam.rune.RuneRegeneration;
 import mods.themike.modjam.rune.RuneRegistry;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -38,7 +34,7 @@ public class ItemRune extends Item {
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void updateIcons(IconRegister reg) {
+	public void registerIcons(IconRegister reg) {
 		for(int par1 = 0; par1 != RuneRegistry.getrunes().length; par1++) {
 			IRune rune = RuneRegistry.getrunes()[par1];
 			if(rune != null) {

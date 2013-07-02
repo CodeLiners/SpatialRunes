@@ -1,15 +1,8 @@
 package mods.themike.modjam;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-import themike.core.render.StringColor;
-
-import ljdp.easypacket.EasyPacketDispatcher;
 import mods.themike.modjam.handler.GUIHandler;
 import mods.themike.modjam.handler.MobDropHandler;
 import mods.themike.modjam.handler.SoundHandler;
-import mods.themike.modjam.items.ItemBlockDecoration;
 import mods.themike.modjam.packet.PacketHandler;
 import mods.themike.modjam.proxy.IProxy;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
@@ -18,34 +11,20 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
-import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.DungeonHooks;
-import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Init;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod.PostInit;
-import cpw.mods.fml.common.Mod.PreInit;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.common.*;
+import cpw.mods.fml.common.Mod.*;
+import cpw.mods.fml.common.*;
+import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.network.*;
+import cpw.mods.fml.common.registry.*;
 
 // Use the Force, Luke.
 // Thee shall now be dubbed, Spatial Runes!
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels=("SpatialRunes"), packetHandler = PacketHandler.class)
-@Mod(modid = "ModJamMagic!", name = "Spatial Runes", version = "1.0.0")
+@Mod(modid = "SpatialRunes", name = "Spatial Runes", version = "1.0.0")
 public class ModJam {
 
-	@Instance("ModJamMagic!")
+	@Instance("SpatialRunes")
 	public static ModJam instance;
 	
 	public static Item item;
@@ -55,10 +34,9 @@ public class ModJam {
 	public static Item reaper;
 	
 	public static Block carvingStone;
+
 	public static Block decoration;
-	public static Block slabs;
-	
-	public static Block ghost;
+	public static Block mageSlab;
 	public static Block lamp;
 	
 	public static boolean hasAtum = false;
@@ -87,10 +65,6 @@ public class ModJam {
 		proxy.init();
 		NetworkRegistry.instance().registerGuiHandler(this, new GUIHandler());
 		GameRegistry.registerBlock(carvingStone, "Carving Stone");
-		GameRegistry.registerBlock(decoration, ItemBlockDecoration.class, "Decoration");
-		GameRegistry.registerBlock(slabs, "Slabs");
-		GameRegistry.registerBlock(ghost, "Ghost Block");
-		GameRegistry.registerBlock(lamp, "Magebrick Lamp");
 		GameRegistry.registerTileEntity(TileEntityCarvingStone.class, "Carving Stone");
 		
 		LanguageRegistry.instance().addStringLocalization("itemsub.dustSpatial.name", StringColor.applyColor(9) + "Spatial Dust");

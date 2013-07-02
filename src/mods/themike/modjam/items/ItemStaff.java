@@ -5,18 +5,14 @@ import java.util.Random;
 
 import themike.core.packet.PacketParticle;
 import themike.core.packet.PacketSound;
-import themike.core.render.StringColor;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ljdp.easypacket.EasyPacket;
-import ljdp.easypacket.EasyPacketHandler;
 import mods.themike.modjam.ModJam;
 import mods.themike.modjam.packet.PacketHandler;
 import mods.themike.modjam.rune.IRune;
 import mods.themike.modjam.rune.RuneRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -45,7 +41,7 @@ public class ItemStaff extends ItemMulti {
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void updateIcons(IconRegister reg) {
+	public void registerIcons(IconRegister reg) {
 		for(int par1 = 0; par1 < subNames.length; par1++) {
 			subIcons[par1] = reg.registerIcon("mikejam:staff" + subNames[par1]);
 		}

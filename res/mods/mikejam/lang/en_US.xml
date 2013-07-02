@@ -3,10 +3,11 @@
 <properties version="1.0">
     <entry key="tile.carvingStone.name">Carving Stone</entry>
     <entry key="tile.magebrickLamp.name">Magebrick Lamp</entry>
-    <entry key="blocksub.magebrick.name">Magebrick</entry>
-    <entry key="blocksub.endbrick.name">Endstone Brick</entry>
-    <entry key="blocksub.endchiseled.name">Chiseled Endstone Brick</entry>
-    <entry key="slab.magebrick.name">Magebrick Slab</entry>
+    <entry key="block.sub.magebrick.name">Magebrick</entry>
+    <entry key="block.sub.endbrick.name">Endstone Brick</entry>
+    <entry key="block.sub.endchiseled.name">Chiseled Endstone Brick</entry>
+    <entry key="slab.sub.magebrick.name">Magebrick Slab</entry>
+    <entry key="slab.sub.endbrick.name">Endstone Slab</entry>
     <entry key="rune.blank.name">Uncarved Rune</entry>
     <entry key="rune.regeneration.name">Rune of Regeneration</entry>
     <entry key="rune.fire.name">Rune of Fire</entry>

@@ -40,7 +40,7 @@ public class ItemMulti extends Item {
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void updateIcons(IconRegister reg) {
+	public void registerIcons(IconRegister reg) {
 		for(int par1 = 0; par1 < subNames.length; par1++) {
 			subIcons[par1] = reg.registerIcon("mikejam:" + subNames[par1]);
 		}
