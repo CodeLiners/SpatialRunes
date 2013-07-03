@@ -116,9 +116,6 @@ public class ContainerCarvingStone extends Container {
                         return null;
                     }
                 }
-                ItemStack copy = slotObject.decrStackSize(1);
-                getSlot(0).putStack(copy);
-                return null;
             } else {
                 return null;
             }

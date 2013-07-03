@@ -7,7 +7,7 @@ import themike.core.block.SlabBase;
 public class SlabDecoration extends SlabBase {
 
     public SlabDecoration(int par1) {
-        super(par1, false, Material.rock, "mikejam", "slab", ["magebrick", "endbrick"]);
+        super(par1, false, Material.rock, "spatialrunes", "magebrick");
         this.setCreativeTab(ModJam.tab);
     }
 

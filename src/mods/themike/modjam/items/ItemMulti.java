@@ -42,7 +42,7 @@ public class ItemMulti extends Item {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
 		for(int par1 = 0; par1 < subNames.length; par1++) {
-			subIcons[par1] = reg.registerIcon("mikejam:" + subNames[par1]);
+			subIcons[par1] = reg.registerIcon("spatialrunes:" + subNames[par1]);
 		}
 	}
 	

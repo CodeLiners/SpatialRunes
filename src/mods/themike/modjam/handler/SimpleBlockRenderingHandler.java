@@ -2,6 +2,8 @@ package mods.themike.modjam.handler;
 
 import org.lwjgl.opengl.GL11;
 
+import themike.core.render.RenderHelper;
+
 import mods.themike.modjam.blocks.BlockCarvingStone;
 import mods.themike.modjam.render.ModelCarvingStone;
 import net.minecraft.block.Block;
@@ -18,7 +20,7 @@ public class SimpleBlockRenderingHandler implements ISimpleBlockRenderingHandler
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {	
 		if(block instanceof BlockCarvingStone) {
-			Minecraft.getMinecraft().renderEngine.bindTexture("/mods/mikejam/textures/models/stone.png");
+			RenderHelper.bindTexture("spatialrunes", "/textures/models/stone.png");
 			GL11.glPushMatrix();
 			GL11.glTranslatef((float) 0.0F, (float) 1F, (float) 0.0F);
 			GL11.glScalef(1.0F, -1F, -1F);

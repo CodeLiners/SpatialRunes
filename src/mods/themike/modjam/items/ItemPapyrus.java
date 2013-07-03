@@ -1,5 +1,6 @@
 package mods.themike.modjam.items;
 
+import themike.core.item.ItemBase;
 import mods.themike.modjam.ModJam;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -8,7 +9,7 @@ import net.minecraft.world.World;
 public class ItemPapyrus extends ItemBase {
 
 	public ItemPapyrus(int par1) {
-		super(par1, "mikejam", "papyrusScroll");
+		super(par1, "spatialrunes", "papyrusScroll");
 		this.setUnlocalizedName("papyrusScroll");
 		this.setCreativeTab(ModJam.tab);
 	}

@@ -1,5 +1,6 @@
 package mods.themike.modjam;
 
+import themike.core.render.RenderHelper;
 import mods.themike.modjam.handler.GUIHandler;
 import mods.themike.modjam.handler.MobDropHandler;
 import mods.themike.modjam.handler.SoundHandler;
@@ -7,6 +8,7 @@ import mods.themike.modjam.packet.PacketHandler;
 import mods.themike.modjam.proxy.IProxy;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
 import net.minecraft.block.Block;
+import net.minecraft.client.resources.ResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -46,45 +48,41 @@ public class ModJam {
 	@SidedProxy(clientSide = "mods.themike.modjam.proxy.ClientProxy", serverSide = "mods.themike.modjam.proxy.CommonProxy")
 	public static IProxy proxy;
 	
-	@PreInit
+	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		
 		MinecraftForge.EVENT_BUS.register(new MobDropHandler());
-		
 		MinecraftForge.EVENT_BUS.register(new SoundHandler());
-		
-		LanguageRegistry.instance().loadLocalization("/mods/mikejam/lang/en_US.xml", "en_US", true);
-		
+				
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		ModJamConfiguration.init(config);		
 	}
 	
-	@Init
+	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		
 		ModJamRecipies.init();
 		proxy.init();
 		NetworkRegistry.instance().registerGuiHandler(this, new GUIHandler());
 		GameRegistry.registerBlock(carvingStone, "Carving Stone");
 		GameRegistry.registerTileEntity(TileEntityCarvingStone.class, "Carving Stone");
 		
-		LanguageRegistry.instance().addStringLocalization("itemsub.dustSpatial.name", StringColor.applyColor(9) + "Spatial Dust");
-		LanguageRegistry.instance().addStringLocalization("itemsub.essence.name", StringColor.applyColor(9) + "Crystalline Essence");
-		LanguageRegistry.instance().addStringLocalization("staff.apprentice.name", StringColor.applyColor(9) + "Staff of the Apprentice");
-		LanguageRegistry.instance().addStringLocalization("item.reaper.name", StringColor.applyColor(9) + "Reaper Blade");
-		LanguageRegistry.instance().addStringLocalization("item.papyrusScroll.name", StringColor.applyColor(14) + "Papyrus Scroll (For a later release)");
-		LanguageRegistry.instance().addStringLocalization("itemsub.magegem.name", StringColor.applyColor(14) + "Mage Gem");
-		LanguageRegistry.instance().addStringLocalization("staff.mage.name", StringColor.applyColor(14) + "Staff of the Mage");
-	
-		ChestGenHooks.addItem(ChestGenHooks.PYRAMID_JUNGLE_CHEST, new WeightedRandomChestContent(new ItemStack(this.item, 1, 3), this.item.itemID, 1, 1));
+		LanguageRegistry.instance().addStringLocalization("itemsub.dustSpatial.name", RenderHelper.applyColor(9) + "Spatial Dust");
+		LanguageRegistry.instance().addStringLocalization("itemsub.essence.name", RenderHelper.applyColor(9) + "Crystalline Essence");
+		LanguageRegistry.instance().addStringLocalization("staff.apprentice.name", RenderHelper.applyColor(9) + "Staff of the Apprentice");
+		LanguageRegistry.instance().addStringLocalization("item.reaper.name", RenderHelper.applyColor(9) + "Reaper Blade");
+		LanguageRegistry.instance().addStringLocalization("item.papyrusScroll.name", RenderHelper.applyColor(14) + "Papyrus Scroll (For a later release)");
+		LanguageRegistry.instance().addStringLocalization("itemsub.magegem.name", RenderHelper.applyColor(14) + "Mage Gem");
+		LanguageRegistry.instance().addStringLocalization("staff.mage.name", RenderHelper.applyColor(14) + "Staff of the Mage");
 	}
 	
-	@PostInit
+	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		
 		if(Loader.isModLoaded("Atum")) {
 			hasAtum = true;
-		}
-		
+		}	
 	}
+	
+	
 	
 }

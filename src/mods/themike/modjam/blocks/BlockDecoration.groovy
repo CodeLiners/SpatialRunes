@@ -7,7 +7,7 @@ import themike.core.block.BlockBase
 class BlockDecoration extends BlockBase {
 
     BlockDecoration(int par1) {
-        super(par1, Material.rock, "mikejam", "block")
+        super(par1, Material.rock, "spatialrunes", "block", ["magebrick", "endbrick", "endchiseled"])
         this.setCreativeTab(ModJam.tab)
         this.setResistance(15.0F)
         this.setHardness(3.0F)

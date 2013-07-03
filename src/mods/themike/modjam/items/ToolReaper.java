@@ -8,6 +8,7 @@ import mods.themike.modjam.ModJam;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
@@ -27,13 +28,13 @@ public class ToolReaper extends ItemSword {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister register) {
-        this.itemIcon = register.registerIcon("mikejam:reaper");
+        this.itemIcon = register.registerIcon("spatialrunes:reaper");
     }
     
     @Override
-    public boolean hitEntity(ItemStack stack, EntityLiving target, EntityLiving player) {
+    public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase player) {
     	super.hitEntity(stack, target, player);
-    	if(target.getHealth() == 0){
+    	if(target.func_110143_aJ() == 0){
     		
     		Random rand = new Random();
     		if(target instanceof EntitySkeleton) {

@@ -2,6 +2,8 @@ package mods.themike.modjam.items;
 
 import java.util.List;
 
+import themike.core.render.RenderHelper;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.themike.modjam.ModJam;
@@ -38,7 +40,7 @@ public class ItemRune extends Item {
 		for(int par1 = 0; par1 != RuneRegistry.getrunes().length; par1++) {
 			IRune rune = RuneRegistry.getrunes()[par1];
 			if(rune != null) {
-				icons[par1] = reg.registerIcon("mikejam:rune" + rune.getName());
+				icons[par1] = reg.registerIcon("spatialrunes:rune" + rune.getName());
 			}
 		}
 	}
@@ -76,9 +78,9 @@ public class ItemRune extends Item {
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		if(stack.getTagCompound() != null && stack.getItemDamage() != 0 && RuneRegistry.getrunes()[stack.getItemDamage()] != null) {
-			list.add(StringColor.applyColor(9) + "Level " + String.valueOf(RuneRegistry.getrunes()[stack.getItemDamage()].getLevel()) + " Rune.");
+			list.add(RenderHelper.applyColor(9) + "Level " + String.valueOf(RuneRegistry.getrunes()[stack.getItemDamage()].getLevel()) + " Rune.");
 			int uses = stack.getTagCompound().getInteger("uses");
-			list.add(StringColor.applyColor(14) + String.valueOf(uses) + " uses left.");
+			list.add(RenderHelper.applyColor(14) + String.valueOf(uses) + " uses left.");
 		}
 	}
 

@@ -1,0 +1,22 @@
+tile.carvingStone.name=Carving Stone
+tile.magebrickLamp.name=Magebrick Lamp
+block.sub.magebrick.name=Magebrick
+block.sub.endbrick.name=Endstone Brick
+block.sub.endchiseled.name=Chiseled Endstone Brick
+slab.sub.magebrick.name=Magebrick Slab
+slab.sub.endbrick.name=Endstone Slab
+rune.blank.name=Uncarved Rune
+rune.regeneration.name=Rune of Regeneration
+rune.fire.name=Rune of Fire
+rune.protection.name=Rune of Protection
+rune.power.name=Rune of Power
+itemsub.endRod.name=Endstone Rod
+itemGroup.modJam=Spatial Runes
+
+itemsub.dustSpatial.name=Spatial Dust
+itemsub.essence.name=Crystalline Essence
+staff.apprentice.name=Staff of the Apprentice
+item.reaper.name=Reaper Blade
+item.papyrusScroll.name=Papyrus Scroll
+itemsub.magegem.name=Mage Gem
+staff.mage.name=Staff of the Mage

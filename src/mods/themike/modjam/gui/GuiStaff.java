@@ -1,5 +1,6 @@
 package mods.themike.modjam.gui;
 
+import themike.core.render.RenderHelper;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import mods.themike.modjam.container.ContainerStaff;
 import mods.themike.modjam.inventory.InventoryStaff;
@@ -32,7 +33,7 @@ public class GuiStaff extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
-		this.mc.renderEngine.bindTexture("/mods/mikejam/textures/gui/staff.png");
+		RenderHelper.bindTexture("spatialrunes", "/textures/gui/staff.png");
 		int x = (this.width - 176) / 2;
 		int y = (this.height - 200) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, 256, 256);

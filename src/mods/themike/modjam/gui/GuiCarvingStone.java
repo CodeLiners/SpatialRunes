@@ -2,6 +2,10 @@ package mods.themike.modjam.gui;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.common.Mod.EventHandler;
+
+import themike.core.render.RenderHelper;
+
 import mods.themike.modjam.ModJam;
 import mods.themike.modjam.container.ContainerCarvingStone;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -30,7 +34,7 @@ public class GuiCarvingStone extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
-		this.mc.renderEngine.bindTexture("/mods/mikejam/textures/gui/carving.png");
+		RenderHelper.bindTexture("spatialrunes", "/textures/gui/carving.png");
 		int x = (this.width - 176) / 2;
 		int y = (this.height - 200) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, 256, 256);

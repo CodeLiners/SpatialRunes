@@ -6,15 +6,17 @@ import themike.core.block.TileBase;
 import mods.themike.modjam.ModJam;
 import mods.themike.modjam.proxy.ClientProxy;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class BlockCarvingStone extends TileBase {
 
 	public BlockCarvingStone(int par1) {
-		super(par1, Material.rock, "mikejam", "carvingStone");
+		super(par1, Material.rock, "spatialrunes", "carvingStone");
 		this.setHardness(1.0F);
 		this.setCreativeTab(ModJam.tab);
 		this.setResistance(2.0F);
@@ -25,6 +27,11 @@ public class BlockCarvingStone extends TileBase {
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityCarvingStone();
 	}
+	
+    @Override
+    public Icon getIcon(int side, int meta) {
+    	return Block.stone.getIcon(side, meta);
+    }
 	
 	@Override
 	@SideOnly(Side.CLIENT)

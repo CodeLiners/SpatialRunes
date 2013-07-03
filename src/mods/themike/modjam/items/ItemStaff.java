@@ -5,6 +5,7 @@ import java.util.Random;
 
 import themike.core.packet.PacketParticle;
 import themike.core.packet.PacketSound;
+import themike.core.render.RenderHelper;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -16,6 +17,7 @@ import mods.themike.modjam.rune.RuneRegistry;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
@@ -43,7 +45,7 @@ public class ItemStaff extends ItemMulti {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
 		for(int par1 = 0; par1 < subNames.length; par1++) {
-			subIcons[par1] = reg.registerIcon("mikejam:staff" + subNames[par1]);
+			subIcons[par1] = reg.registerIcon("spatialrunes:staff" + subNames[par1]);
 		}
 	}
 	
@@ -82,7 +84,7 @@ public class ItemStaff extends ItemMulti {
 		if(stack.getTagCompound().getTag("item") != null) {
 			ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
 			if(stack.getTagCompound().getTag("item") != null && runeStack != null) {
-				list.add(StringColor.applyColor(14) + LanguageRegistry.instance().getStringLocalization("rune." + RuneRegistry.getrunes()[runeStack.getItemDamage()].getName() + ".name") + ".");
+				list.add(RenderHelper.applyColor(14) + LanguageRegistry.instance().getStringLocalization("rune." + RuneRegistry.getrunes()[runeStack.getItemDamage()].getName() + ".name") + ".");
 			}
 		}
 	}
@@ -93,7 +95,7 @@ public class ItemStaff extends ItemMulti {
 		ItemStack newStack = stack.copy();
 		
 		if(!world.isRemote && !player.isSneaking() && stack.getTagCompound().getTag("item") == null) {
-				player.sendChatToPlayer(StringColor.applyColor(12) + "No Rune selected!");
+				player.addChatMessage(RenderHelper.applyColor(12) + "No Rune selected!");
 		}
 		if(!world.isRemote && !player.isSneaking() && stack.getTagCompound().getTag("item") != null) {
 			ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
@@ -113,21 +115,21 @@ public class ItemStaff extends ItemMulti {
 				}
 				this.sparkle("reddust", player, world, (int) player.posX, (int) player.posY + 1, (int) player.posZ, world.rand);
 			} else if(runeStack != null) {
-				player.sendChatToPlayer(StringColor.applyColor(14) + "Not enough XP to use this rune!");
+				player.addChatMessage(RenderHelper.applyColor(14) + "Not enough XP to use this rune!");
 			} 
 		}
 		if(world.isRemote && !player.isSneaking() && stack.getTagCompound().getTag("item") == null) {
-			PacketSound sound = new PacketSound("mods.mikejam.sounds.failure", 1.0F, 1.0F);
+			PacketSound sound = new PacketSound("assets.spatialrunes.sounds.failure", 1.0F, 1.0F);
 			PacketHandler.sound.sendToAllPlayersAround(sound, (int) player.posX, (int) player.posY + 1, (int) player.posZ, 10, player.dimension);
 		}
 		if(world.isRemote && !player.isSneaking() && stack.getTagCompound() != null) {
 			if(stack.getTagCompound().getTag("item") != null) {
 				ItemStack runeStack = ItemStack.loadItemStackFromNBT((NBTTagCompound) stack.getTagCompound().getTag("item"));
 				if(runeStack != null && player.experienceLevel  >= RuneRegistry.getrunes()[runeStack.getItemDamage()].getLevel()) {
-					PacketSound sound = new PacketSound("mods.mikejam.sounds.sucess", 1.0F, 1.0F);
+					PacketSound sound = new PacketSound("runes_success", 1.0F, 1.0F);
 					PacketHandler.sound.sendToAllPlayersAround(sound, (int) player.posX, (int) player.posY + 1, (int) player.posZ, 10, player.dimension);
 				} else if(runeStack != null) {
-					PacketSound sound = new PacketSound("mods.mikejam.sounds.failure", 1.0F, 1.0F);
+					PacketSound sound = new PacketSound("runes_failure", 1.0F, 1.0F);
 					PacketHandler.sound.sendToAllPlayersAround(sound, (int) player.posX, (int) player.posY + 1, (int) player.posZ, 10, player.dimension);
 				}
 			}
