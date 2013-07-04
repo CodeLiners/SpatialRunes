@@ -1,4 +1,4 @@
-package mods.themike.modjam.rune;
+package mods.themike.modjam.api.runes;
 
 import net.minecraft.entity.player.EntityPlayer;
 

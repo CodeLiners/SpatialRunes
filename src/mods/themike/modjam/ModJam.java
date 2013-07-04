@@ -1,11 +1,13 @@
 package mods.themike.modjam;
 
 import themike.core.render.RenderHelper;
+import mods.themike.modjam.api.runes.RuneRegistry;
 import mods.themike.modjam.handler.GUIHandler;
 import mods.themike.modjam.handler.MobDropHandler;
 import mods.themike.modjam.handler.SoundHandler;
 import mods.themike.modjam.packet.PacketHandler;
 import mods.themike.modjam.proxy.IProxy;
+import mods.themike.modjam.tile.BlankTileEntity;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.ResourceLocation;
@@ -19,9 +21,10 @@ import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.registry.*;
+import mods.themike.modjam.rune.*;
 
-// Use the Force, Luke.
-// Thee shall now be dubbed, Spatial Runes!
+/* Use the Force, Luke.
+Thee shall now be dubbed, Spatial Runes! */
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels=("SpatialRunes"), packetHandler = PacketHandler.class)
 @Mod(modid = "SpatialRunes", name = "Spatial Runes", version = "1.0.0")
 public class ModJam {
@@ -30,6 +33,7 @@ public class ModJam {
 	public static ModJam instance;
 	
 	public static Item item;
+	public static Item essence;
 	public static Item runes;
 	public static Item staff;
 	public static Item scroll;
@@ -53,6 +57,12 @@ public class ModJam {
 		
 		MinecraftForge.EVENT_BUS.register(new MobDropHandler());
 		MinecraftForge.EVENT_BUS.register(new SoundHandler());
+		
+		RuneRegistry.appendRune(new RuneBlank());
+		RuneRegistry.appendRune(new RuneFire());
+		RuneRegistry.appendRune(new RunePower());
+		RuneRegistry.appendRune(new RuneProtection());
+		RuneRegistry.appendRune(new RuneRegeneration());
 				
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		ModJamConfiguration.init(config);		
@@ -66,6 +76,7 @@ public class ModJam {
 		NetworkRegistry.instance().registerGuiHandler(this, new GUIHandler());
 		GameRegistry.registerBlock(carvingStone, "Carving Stone");
 		GameRegistry.registerTileEntity(TileEntityCarvingStone.class, "Carving Stone");
+		GameRegistry.registerTileEntity(BlankTileEntity.class, "Blank TileEntity");
 		
 		LanguageRegistry.instance().addStringLocalization("itemsub.dustSpatial.name", RenderHelper.applyColor(9) + "Spatial Dust");
 		LanguageRegistry.instance().addStringLocalization("itemsub.essence.name", RenderHelper.applyColor(9) + "Crystalline Essence");

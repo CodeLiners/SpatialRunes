@@ -1,5 +1,6 @@
 package mods.themike.modjam.rune;
 
+import mods.themike.modjam.api.runes.IRune;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class RuneBlank implements IRune {

@@ -2,6 +2,7 @@ package mods.themike.modjam.rune;
 
 import java.util.List;
 
+import mods.themike.modjam.api.runes.IRune;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,7 +32,7 @@ public class RuneFire implements IRune {
 
 	@Override
 	public int getLevel() {
-		return 15;
+		return 35;
 	}
 
 	@Override

@@ -3,8 +3,8 @@ package mods.themike.modjam.tile;
 import com.google.common.collect.ObjectArrays;
 
 import mods.themike.modjam.ModJam;
-import mods.themike.modjam.rune.IRune;
-import mods.themike.modjam.rune.RuneRegistry;
+import mods.themike.modjam.api.runes.IRune;
+import mods.themike.modjam.api.runes.RuneRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -107,35 +107,35 @@ public class TileEntityCarvingStone extends TileEntity implements IInventory {
 	public void update() {
 		if(inventory[0] != null) {
 			Integer[] runes = new Integer[]{};
-			for(int var1 = 1; var1 != RuneRegistry.getrunes().length; var1++) {
-				if(RuneRegistry.getrunes()[var1].getSacrifice() == inventory[0].getItem()) {
+			for(int var1 = 1; var1 != RuneRegistry.getrunes().size(); var1++) {
+				if(RuneRegistry.getrunes().get(var1).getSacrifice() == inventory[0].getItem()) {
 					runes = ObjectArrays.concat(var1, runes);
 				}
 			}
 			if(runes.length >= 1) {
 				NBTTagCompound tag = new NBTTagCompound();
-				tag.setInteger("uses", RuneRegistry.getrunes()[runes[0]].getUses());
+				tag.setInteger("uses", RuneRegistry.getrunes().get(runes[0]).getUses());
 				ItemStack stack = new ItemStack(ModJam.runes, 1, runes[0]);
 				stack.setTagCompound(tag);
 				inventory[6] = stack;
 			}
 			if(runes.length >= 2) {
 				NBTTagCompound tag = new NBTTagCompound();
-				tag.setInteger("uses", RuneRegistry.getrunes()[runes[1]].getUses());
+				tag.setInteger("uses", RuneRegistry.getrunes().get(runes[1]).getUses());
 				ItemStack stack = new ItemStack(ModJam.runes, 1, runes[1]);
 				stack.setTagCompound(tag);
 				inventory[5] = stack;
 			}
 			if(runes.length >= 3) {
 				NBTTagCompound tag = new NBTTagCompound();
-				tag.setInteger("uses", RuneRegistry.getrunes()[runes[2]].getUses());
+				tag.setInteger("uses", RuneRegistry.getrunes().get(runes[2]).getUses());
 				ItemStack stack = new ItemStack(ModJam.runes, 1, runes[2]);
 				stack.setTagCompound(tag);
 				inventory[3] = stack;
 			}
 			if(runes.length >= 4) {
 				NBTTagCompound tag = new NBTTagCompound();
-				tag.setInteger("uses", RuneRegistry.getrunes()[runes[3]].getUses());
+				tag.setInteger("uses", RuneRegistry.getrunes().get(runes[3]).getUses());
 				ItemStack stack = new ItemStack(ModJam.runes, 1, runes[3]);
 				stack.setTagCompound(tag);
 				inventory[4] = stack;

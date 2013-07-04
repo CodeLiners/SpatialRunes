@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 public class ItemMulti extends Item {
 	
-	protected static String[] subNames = new String[]{"dustSpatial", "essence", "endRod", "magegem"};
+	protected static String[] subNames = new String[]{"dustSpatial", "endRod", "magegem"};
 	private static Icon[] subIcons = new Icon[subNames.length];
 	
 	public ItemMulti(int par1) {
@@ -55,7 +55,7 @@ public class ItemMulti extends Item {
 	
 	@Override 
 	public boolean hasEffect(ItemStack stack) {
-		if(stack.getItemDamage() < 2) {
+		if(stack.getItemDamage() < 1) {
 			return true;
 		}
 		return false;

@@ -1,6 +1,7 @@
 tile.carvingStone.name=Carving Stone
 tile.magebrickLamp.name=Magebrick Lamp
 block.sub.magebrick.name=Magebrick
+tile.magebrick.name=Magebrick Slab
 block.sub.endbrick.name=Endstone Brick
 block.sub.endchiseled.name=Chiseled Endstone Brick
 slab.sub.magebrick.name=Magebrick Slab
@@ -14,7 +15,7 @@ itemsub.endRod.name=Endstone Rod
 itemGroup.modJam=Spatial Runes
 
 itemsub.dustSpatial.name=Spatial Dust
-itemsub.essence.name=Crystalline Essence
+item.essence.name=Crystalline Essence
 staff.apprentice.name=Staff of the Apprentice
 item.reaper.name=Reaper Blade
 item.papyrusScroll.name=Papyrus Scroll

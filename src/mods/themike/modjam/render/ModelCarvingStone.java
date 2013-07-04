@@ -24,21 +24,16 @@ public class ModelCarvingStone extends ModelBase {
     
     Shape1 = new ModelRenderer(this, 0, 0);
     Shape1.addBox(0F, 0F, 0F, 14, 14, 14);
-    Shape1.setRotationPoint(-7F, 10F, -7F);
+    Shape1.setRotationPoint(8F, 8F, 8F);
     Shape1.setTextureSize(64, 64);
     Shape1.mirror = true;
-    setRotation(Shape1, 0F, 0F, 0F);
   }
   
-  public static void render(float f5) {
+  public static void render(float f5, float x, float y, float z) {
+	Shape1.rotateAngleX = x;
+	Shape1.rotateAngleY = y;
+	Shape1.rotateAngleZ = z;
     Shape1.render(f5);
-  }
-  
-  private void setRotation(ModelRenderer model, float x, float y, float z)
-  {
-    model.rotateAngleX = x;
-    model.rotateAngleY = y;
-    model.rotateAngleZ = z;
   }
 
 }

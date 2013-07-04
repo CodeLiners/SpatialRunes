@@ -2,6 +2,8 @@ package mods.themike.modjam.proxy;
 
 import mods.themike.modjam.handler.SimpleBlockRenderingHandler;
 import mods.themike.modjam.render.RenderCarvingStone;
+import mods.themike.modjam.render.RenderMagebrickLamp;
+import mods.themike.modjam.tile.BlankTileEntity;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -20,6 +22,8 @@ public class ClientProxy implements IProxy {
 		ID = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(ID, handler);
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCarvingStone.class, new RenderCarvingStone());
+		ClientRegistry.bindTileEntitySpecialRenderer(BlankTileEntity.class, new RenderMagebrickLamp());
+
 	}
 
 }

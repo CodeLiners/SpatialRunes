@@ -7,8 +7,8 @@ import themike.core.render.RenderHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.themike.modjam.ModJam;
-import mods.themike.modjam.rune.IRune;
-import mods.themike.modjam.rune.RuneRegistry;
+import mods.themike.modjam.api.runes.IRune;
+import mods.themike.modjam.api.runes.RuneRegistry;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,8 +37,8 @@ public class ItemRune extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		for(int par1 = 0; par1 != RuneRegistry.getrunes().length; par1++) {
-			IRune rune = RuneRegistry.getrunes()[par1];
+		for(int par1 = 0; par1 != RuneRegistry.getrunes().size(); par1++) {
+			IRune rune = RuneRegistry.getrunes().get(par1);
 			if(rune != null) {
 				icons[par1] = reg.registerIcon("spatialrunes:rune" + rune.getName());
 			}
@@ -47,13 +47,13 @@ public class ItemRune extends Item {
 	
 	@Override
 	public void getSubItems(int ID, CreativeTabs tabs, List list) {
-		for(int par1 = 0; par1 < RuneRegistry.getrunes().length; par1++) {
-			if(RuneRegistry.getrunes()[par1] != null) {
+		for(int par1 = 0; par1 < RuneRegistry.getrunes().size(); par1++) {
+			if(RuneRegistry.getrunes().get(par1) != null) {
 				if(par1 == 0) {
 					list.add(new ItemStack(ID, 1, par1));
 				} else {
 					NBTTagCompound tag = new NBTTagCompound();
-					tag.setInteger("uses", RuneRegistry.getrunes()[par1].getUses());
+					tag.setInteger("uses", RuneRegistry.getrunes().get(par1).getUses());
 					ItemStack stack = new ItemStack(ID, 1, par1);
 					stack.setTagCompound(tag);
 					list.add(stack);
@@ -64,8 +64,8 @@ public class ItemRune extends Item {
 	
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		if(stack.getItemDamage() >= 0 && stack.getItemDamage() < RuneRegistry.getrunes().length) {
-			return "rune." + RuneRegistry.getrunes()[stack.getItemDamage()].getName();
+		if(stack.getItemDamage() >= 0 && stack.getItemDamage() < RuneRegistry.getrunes().size()) {
+			return "rune." + RuneRegistry.getrunes().get(stack.getItemDamage()).getName();
 		}
 		return null;
 	}
@@ -77,8 +77,8 @@ public class ItemRune extends Item {
 	
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		if(stack.getTagCompound() != null && stack.getItemDamage() != 0 && RuneRegistry.getrunes()[stack.getItemDamage()] != null) {
-			list.add(RenderHelper.applyColor(9) + "Level " + String.valueOf(RuneRegistry.getrunes()[stack.getItemDamage()].getLevel()) + " Rune.");
+		if(stack.getTagCompound() != null && stack.getItemDamage() != 0 && RuneRegistry.getrunes().get(stack.getItemDamage())!= null) {
+			list.add(RenderHelper.applyColor(9) + "Level " + String.valueOf(RuneRegistry.getrunes().get(stack.getItemDamage()).getLevel()) + " Rune.");
 			int uses = stack.getTagCompound().getInteger("uses");
 			list.add(RenderHelper.applyColor(14) + String.valueOf(uses) + " uses left.");
 		}

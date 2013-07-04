@@ -3,7 +3,6 @@ package mods.themike.modjam.container;
 
 import mods.themike.modjam.ModJam;
 import mods.themike.modjam.inventory.InventoryStaff;
-import mods.themike.modjam.slot.SlotAppr;
 import mods.themike.modjam.slot.SlotStaff;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -14,17 +13,18 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class ContainerStaff extends Container {
 					
-	private static IInventory inventory;
-	private static EntityPlayer player;
+	private IInventory inventory;
+	private EntityPlayer player;
+	private long timestamp; 
 	
 	public ContainerStaff(EntityPlayer par1, IInventory par2) {		
 		player = par1;
 		inventory = par2;
 		
 		if(par1.getHeldItem().getItemDamage() == 0) {
-			this.addSlotToContainer(new SlotAppr(inventory, 0, 80, 22));
+			this.addSlotToContainer(new SlotStaff(inventory, 0, 80, 22, true));
 		} else {
-			this.addSlotToContainer(new SlotStaff(player, inventory, 0, 80, 22));
+			this.addSlotToContainer(new SlotStaff(inventory, 0, 80, 22, false));
 		}						
 		int var3;
 		
@@ -39,7 +39,7 @@ public class ContainerStaff extends Container {
 		}
 		
 		ItemStack staff = player.getHeldItem();
-		InventoryStaff staffInv= (InventoryStaff) inventory;
+		InventoryStaff staffInv = (InventoryStaff) inventory;
 		if(staff != null) {
 			if(staff.getTagCompound() != null && staff.getTagCompound().getTag("item") != null) {
 				staffInv.inventory[0] = ItemStack.loadItemStackFromNBT((NBTTagCompound) staff.getTagCompound().getTag("item"));
@@ -59,13 +59,13 @@ public class ContainerStaff extends Container {
 		if(slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
 			ItemStack stack = stackInSlot.copy();
+			ItemStack newStack = stackInSlot.splitStack(1);
 			if(slot <= 1) {
 				if(!mergeItemStack(stackInSlot, 1, inventorySlots.size(), true))
 					return null;
-			} else if(slot > 0 && stack.itemID == ModJam.runes.itemID && !getSlot(0).getHasStack()) {
-				ItemStack copy = slotObject.decrStackSize(1);
-				getSlot(0).putStack(copy);
-				return null;
+			} else if(slot > 0 && stack.itemID == ModJam.runes.itemID && !getSlot(0).getHasStack() && getSlot(0).isItemValid(newStack)) {
+				if(!mergeItemStack(newStack, 0, 1, true))
+					return null;
 			} else {
 				return null;
 			}

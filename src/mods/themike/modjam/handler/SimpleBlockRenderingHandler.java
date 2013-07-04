@@ -25,7 +25,7 @@ public class SimpleBlockRenderingHandler implements ISimpleBlockRenderingHandler
 			GL11.glTranslatef((float) 0.0F, (float) 1F, (float) 0.0F);
 			GL11.glScalef(1.0F, -1F, -1F);
 			GL11.glRotatef(0F, 0F, 1F, 0F);
-			stone.render(0.0625F);
+			stone.render(0.0625F, 0F, 0F, 0F);
 			GL11.glPopMatrix();
 		}
 	}

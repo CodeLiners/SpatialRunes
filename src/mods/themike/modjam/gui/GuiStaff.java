@@ -28,7 +28,7 @@ public class GuiStaff extends GuiContainer {
 	@Override
 	public void drawGuiContainerForegroundLayer(int x, int y) {
 		String name = LanguageRegistry.instance().getStringLocalization(staff.getItem().getUnlocalizedName(staff) + ".name");
-		fontRenderer.drawString(name, (xSize - fontRenderer.getStringWidth(name)) / 2, -20, 4210752);
+		fontRenderer.drawString(name, (xSize - fontRenderer.getStringWidth(name)) / 2, -30, 4210752);
 	}
 
 	@Override

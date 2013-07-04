@@ -1,9 +1,8 @@
 package mods.themike.modjam.container;
 
+import themike.core.gui.slot.SlotClosed;
+import themike.core.gui.slot.SlotSpecific;
 import mods.themike.modjam.ModJam;
-import mods.themike.modjam.slot.SlotHelper;
-import mods.themike.modjam.slot.SlotReject;
-import mods.themike.modjam.slot.SlotRune;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -22,12 +21,12 @@ public class ContainerCarvingStone extends Container {
 		inventory = par2;
 		
 		this.addSlotToContainer(new Slot(inventory, 0, 80, 15));
-        this.addSlotToContainer(new SlotRune(new ItemStack(ModJam.runes, 0, 0), inventory, 1, 69, 39));
-        this.addSlotToContainer(new SlotHelper(new ItemStack(Item.dyePowder, 1, 4), inventory, 2, 91, 39));
-		this.addSlotToContainer(new SlotReject(inventory, 3, 124, 15));
-		this.addSlotToContainer(new SlotReject(inventory, 4, 141, 15));
-		this.addSlotToContainer(new SlotReject(inventory, 5, 36, 15));
-		this.addSlotToContainer(new SlotReject(inventory, 6, 19, 15));
+        this.addSlotToContainer(new SlotSpecific(new ItemStack(ModJam.runes, 0, 0), inventory, 1, 69, 39));
+        this.addSlotToContainer(new SlotSpecific(new ItemStack(Item.dyePowder, 1, 4), inventory, 2, 91, 39));
+		this.addSlotToContainer(new SlotClosed(inventory, 3, 124, 15));
+		this.addSlotToContainer(new SlotClosed(inventory, 4, 141, 15));
+		this.addSlotToContainer(new SlotClosed(inventory, 5, 36, 15));
+		this.addSlotToContainer(new SlotClosed(inventory, 6, 19, 15));
 		
 		int var3;
 		

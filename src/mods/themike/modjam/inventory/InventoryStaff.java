@@ -1,5 +1,7 @@
 package mods.themike.modjam.inventory;
 
+import themike.core.util.ItemHelper;
+import mods.themike.modjam.ModJam;
 import mods.themike.modjam.items.ItemRune;
 import mods.themike.modjam.items.ItemStaff;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,9 +14,11 @@ public class InventoryStaff implements IInventory {
 	public ItemStack[] inventory = new ItemStack[1];
 
 	EntityPlayer player = null;
+	long time = 0;
 	
 	public InventoryStaff(EntityPlayer par1) {
 		player = par1;
+		time = player.inventory.getStackInSlot(player.inventory.currentItem).getTagCompound().getLong("timestamp");
 	}
 	
 	@Override
@@ -57,23 +61,30 @@ public class InventoryStaff implements IInventory {
 	@Override
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
 		inventory[i] = itemstack;
-		save();
+		System.out.println("Hello!");
+		if(i == 0) {
+			save();
+		}
 	}
 	
 	public void save() {
 		
-		ItemStack staff = player.getHeldItem();
+		int timestamp = ItemHelper.findTimeStamp(player.inventory, new ItemStack(ModJam.staff), time);
+		
+		if(timestamp != -1) {
+			ItemStack staff = player.inventory.getStackInSlot(timestamp);
 
-		if(!player.worldObj.isRemote && staff != null) {
-			ItemStack rune = getStackInSlot(0);
-			if(rune != null) {
-				NBTTagCompound tag = new NBTTagCompound();
-				rune.writeToNBT(tag);
-				if (staff.getTagCompound() == null) staff.setTagCompound(new NBTTagCompound());
-				staff.getTagCompound().setTag("item", tag);
-				player.inventory.setInventorySlotContents(player.inventory.currentItem, staff);
-			} else {
-				staff.setTagCompound(new NBTTagCompound());
+			if(!player.worldObj.isRemote && staff != null) {
+				ItemStack rune = getStackInSlot(0);
+				if(rune != null) {
+					NBTTagCompound tag = new NBTTagCompound();
+					rune.writeToNBT(tag);
+					if (staff.getTagCompound() == null) staff.setTagCompound(new NBTTagCompound());
+					staff.getTagCompound().setTag("item", tag);
+					player.inventory.setInventorySlotContents(ItemHelper.findTimeStamp(player.inventory, new ItemStack(ModJam.staff), time), staff);
+				} else {
+					staff.setTagCompound(new NBTTagCompound());
+				}
 			}
 		}
 		
@@ -81,10 +92,15 @@ public class InventoryStaff implements IInventory {
 	
 	public void clear() {
 		System.out.println("Clearing");
-		ItemStack staff = player.getHeldItem();
+		
+		int timestamp = ItemHelper.findTimeStamp(player.inventory, new ItemStack(ModJam.staff), time);
+		
+		if(timestamp != -1) {
+			ItemStack staff = player.inventory.getStackInSlot(timestamp);
 
-		if(!player.worldObj.isRemote && staff != null) {
-			staff.setTagCompound(new NBTTagCompound());
+			if(!player.worldObj.isRemote && staff != null) {
+				staff.getTagCompound().removeTag("item");
+			}
 		}
 		
 	}

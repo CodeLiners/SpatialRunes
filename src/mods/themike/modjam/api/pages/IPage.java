@@ -1,4 +1,4 @@
-package mods.themike.modjam.scroll;
+package mods.themike.modjam.api.pages;
 
 public interface IPage {
 	

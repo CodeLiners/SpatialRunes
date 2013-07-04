@@ -1,5 +1,6 @@
 package mods.themike.modjam.handler;
 
+import mods.themike.modjam.ModJam;
 import mods.themike.modjam.container.ContainerCarvingStone;
 import mods.themike.modjam.container.ContainerPapyrusScroll;
 import mods.themike.modjam.container.ContainerStaff;
@@ -23,7 +24,7 @@ public class GUIHandler implements IGuiHandler {
 		if(ID == 2) {
 			return new ContainerCarvingStone(player, (TileEntityCarvingStone) world.getBlockTileEntity(x, y, z));
 		}
-		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemPapyrus) {
+		if(player.getHeldItem() != null && player.getHeldItem().itemID == ModJam.scroll.itemID) {
 			return new ContainerPapyrusScroll();
 		}
 		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemStaff) {
@@ -37,7 +38,7 @@ public class GUIHandler implements IGuiHandler {
 		if(ID == 2) {
 			return new GuiCarvingStone(player, (TileEntityCarvingStone) world.getBlockTileEntity(x, y, z));
 		}
-		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemPapyrus) {
+		if(player.getHeldItem() != null && player.getHeldItem().itemID == ModJam.scroll.itemID) {
 			return new GuiPapyrusScroll(new ContainerPapyrusScroll());
 		}
 		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemStaff) {

@@ -1,6 +1,7 @@
 package mods.themike.modjam;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -20,11 +21,12 @@ public class ModJamRecipies {
 
 		ItemStack stack = new ItemStack(ModJam.staff, 1, 0);
 		stack.setTagCompound(new NBTTagCompound());
-
+		
 		ItemStack stack2 = new ItemStack(ModJam.staff, 1, 1);
-		stack.setTagCompound(new NBTTagCompound());
+		stack2.setTagCompound(new NBTTagCompound());
 
-		GameRegistry.addRecipe(stack, new Object[]{"  I", " X ", "X  ", 'X', Item.blazeRod, 'I', new ItemStack(ModJam.item, 1, 1)});
+
+		GameRegistry.addRecipe(stack, new Object[]{"  I", " X ", "X  ", 'X', Item.blazeRod, 'I', new ItemStack(ModJam.essence, 1)});
 		GameRegistry.addRecipe(stack2, new Object[]{"  I", " X ", "X  ", 'X', new ItemStack(ModJam.item, 1, 2), 'I', new ItemStack(ModJam.item, 1, 3)});
 		
 		GameRegistry.addRecipe(new ItemStack(ModJam.carvingStone, 1, 0), new Object[]{"XXX", "XIX", "XIX", 'X', Block.stone, 'I', new ItemStack(ModJam.item, 1, 0)});
