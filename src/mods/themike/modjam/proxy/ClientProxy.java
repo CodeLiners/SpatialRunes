@@ -22,7 +22,7 @@ public class ClientProxy implements IProxy {
 		ID = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(ID, handler);
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCarvingStone.class, new RenderCarvingStone());
-		ClientRegistry.bindTileEntitySpecialRenderer(BlankTileEntity.class, new RenderMagebrickLamp());
+		// ClientRegistry.bindTileEntitySpecialRenderer(BlankTileEntity.class, new RenderMagebrickLamp());
 
 	}
 

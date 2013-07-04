@@ -1,7 +1,7 @@
 package mods.themike.modjam.items
 
 import net.minecraft.item.ItemStack
-import mods.themike.modjam.ModJam
+import mods.themike.modjam.*
 import themike.core.item.ItemBase
 
 class ItemCrystal extends ItemBase {

@@ -78,6 +78,7 @@ public class ModJam {
 		GameRegistry.registerTileEntity(TileEntityCarvingStone.class, "Carving Stone");
 		GameRegistry.registerTileEntity(BlankTileEntity.class, "Blank TileEntity");
 		
+		/*
 		LanguageRegistry.instance().addStringLocalization("itemsub.dustSpatial.name", RenderHelper.applyColor(9) + "Spatial Dust");
 		LanguageRegistry.instance().addStringLocalization("itemsub.essence.name", RenderHelper.applyColor(9) + "Crystalline Essence");
 		LanguageRegistry.instance().addStringLocalization("staff.apprentice.name", RenderHelper.applyColor(9) + "Staff of the Apprentice");
@@ -85,6 +86,7 @@ public class ModJam {
 		LanguageRegistry.instance().addStringLocalization("item.papyrusScroll.name", RenderHelper.applyColor(14) + "Papyrus Scroll (For a later release)");
 		LanguageRegistry.instance().addStringLocalization("itemsub.magegem.name", RenderHelper.applyColor(14) + "Mage Gem");
 		LanguageRegistry.instance().addStringLocalization("staff.mage.name", RenderHelper.applyColor(14) + "Staff of the Mage");
+		*/
 	}
 	
 	@EventHandler
