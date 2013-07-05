@@ -8,7 +8,9 @@ import mods.themike.modjam.proxy.ClientProxy;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
@@ -21,6 +23,25 @@ public class BlockCarvingStone extends TileBase {
 		this.setCreativeTab(ModJam.tab);
 		this.setResistance(2.0F);
 		this.setBlockBounds(0.065F, 0F, 0.065F, 0.935F, 0.875F, 0.935F);
+	}
+	
+	@Override
+	public void breakBlock(World world, int x, int y, int z, int meta, int something) {
+		TileEntityCarvingStone tileEntity = (TileEntityCarvingStone) world.getBlockTileEntity(x, y, z);
+		if(!world.isRemote) {
+			for(int count = 0; count != 3; count++) {
+				ItemStack stack = tileEntity.getStackInSlot(count);
+				if(stack != null) {
+					EntityItem entity = new EntityItem(world, x, y + 0.5, z, stack);
+					entity.motionX = world.rand.nextGaussian() * 0.05F; 
+					entity.motionY = world.rand.nextGaussian() * 0.05F; 
+					entity.motionZ = world.rand.nextGaussian() * 0.05F; 
+					world.spawnEntityInWorld(entity);
+				}
+			}
+		}
+		
+        super.breakBlock(world, x, y, z, meta, something);
 	}
 
 	@Override

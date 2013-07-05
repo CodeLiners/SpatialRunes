@@ -30,7 +30,7 @@ public class RunePower implements IRune {
 
 	@Override
 	public Object getSacrifice() {
-		return Item.redstone;
+		return Item.rottenFlesh;
 	}
 
 }

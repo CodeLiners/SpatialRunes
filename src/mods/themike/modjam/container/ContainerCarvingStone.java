@@ -3,6 +3,7 @@ package mods.themike.modjam.container;
 import themike.core.gui.slot.SlotClosed;
 import themike.core.gui.slot.SlotSpecific;
 import mods.themike.modjam.ModJam;
+import mods.themike.modjam.tile.TileEntityCarvingStone;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -12,13 +13,13 @@ import net.minecraft.item.ItemStack;
 
 public class ContainerCarvingStone extends Container {
 	
-	private static IInventory inventory;
+	private static TileEntityCarvingStone inventory;
 	private static EntityPlayer player;
 
 	public ContainerCarvingStone(EntityPlayer par1, IInventory par2) {
 		
 		player = par1;
-		inventory = par2;
+		inventory = (TileEntityCarvingStone) par2;
 		
 		this.addSlotToContainer(new Slot(inventory, 0, 80, 15));
         this.addSlotToContainer(new SlotSpecific(new ItemStack(ModJam.runes, 0, 0), inventory, 1, 69, 39));
@@ -43,90 +44,45 @@ public class ContainerCarvingStone extends Container {
 	}
 	
 	@Override
-	public boolean canInteractWith(EntityPlayer entityplayer) {
+	public boolean canInteractWith(EntityPlayer player) {
 		return true;
 	}
 
     @Override
     public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-        Slot slotObject = (Slot) inventorySlots.get(slot);
-        if(slotObject != null && slotObject.getHasStack()) {
-            ItemStack stackInSlot = slotObject.getStack();
-            ItemStack stack = stackInSlot.copy();
-            if(slot <= 6) {
-                if(!mergeItemStack(stackInSlot, 7, inventorySlots.size(), true))
-                    return null;
-            } else if(slot > 6) {
-                if(stack.itemID == ModJam.runes.itemID && stack.getItemDamage() == 0) {
-                    if(getSlot(1).getHasStack()) {
-                        ItemStack newStack = getSlot(1).getStack().copy();
-                        if(getSlot(1).getStack().stackSize + stack.stackSize <= getSlot(1).getStack().getMaxStackSize()) {
-                            newStack.stackSize = newStack.stackSize + stack.copy().stackSize;
-                            getSlot(1).putStack(newStack);
+            ItemStack stack = null;
+            Slot slotObject = getSlot(slot);
 
+            if (slotObject != null && slotObject.getHasStack()) {
+                    ItemStack stackInSlot = slotObject.getStack();
+                    stack = stackInSlot.copy();
+
+                    if (slot < 3) {
+                        if (!this.mergeItemStack(stackInSlot, 7, inventorySlots.size(), true)) {
                             return null;
-                        } else {
-                            ItemStack returnStack = stack.copy();
-                            newStack.stackSize = newStack.getMaxStackSize();
-                            returnStack.stackSize = returnStack.stackSize - (newStack.getMaxStackSize() - newStack.stackSize);
-                            return returnStack;
                         }
-                    } else {
-                        getSlot(1).putStack(stack);
-                        return null;
+                    } else if(slot > 6) {
+                    	if(this.getSlot(2).isItemValid(stackInSlot) && !this.mergeItemStack(stackInSlot, 2, 3, true)) {
+                    		return null;
+                    	}
+                    	if(this.getSlot(1).isItemValid(stackInSlot) && !this.mergeItemStack(stackInSlot, 1, 2, true)) {
+                    		return null;
+                    	}
+                    	if(!this.mergeItemStack(stackInSlot, 0, 1, true)) {
+                    		return null;
+                    	}
                     }
-                } else if(stack.itemID == Item.dyePowder.itemID && stack.getItemDamage() == 4 && !getSlot(2).getHasStack()) {
-                    if(getSlot(2).getHasStack()) {
-                        ItemStack newStack = getSlot(2).getStack().copy();
-                        if(getSlot(2).getStack().stackSize + stack.stackSize <= getSlot(2).getStack().getMaxStackSize()) {
-                            newStack.stackSize = newStack.stackSize + stack.copy().stackSize;
-                            getSlot(2).putStack(newStack);
 
-                            return null;
-                        } else {
-                            ItemStack returnStack = stack.copy();
-                            newStack.stackSize = newStack.getMaxStackSize();
-                            returnStack.stackSize = returnStack.stackSize - (newStack.getMaxStackSize() - newStack.stackSize);
-                            return returnStack;
-                        }
-                    } else {
-                        getSlot(2).putStack(stack);
-                        return null;
-                    }
-                } else {
-                    if(getSlot(0).getHasStack()) {
-                        if(getSlot(0).getStack().itemID == stack.itemID && getSlot(0).getStack().getItemDamage() == stack.getItemDamage()) {
-                            ItemStack newStack = getSlot(0).getStack().copy();
-                            if(getSlot(0).getStack().stackSize + stack.stackSize <= getSlot(0).getStack().getMaxStackSize()) {
-                                newStack.stackSize = newStack.stackSize + stack.copy().stackSize;
-                                getSlot(0).putStack(newStack);
+        			if(stackInSlot.stackSize == 0)
+        				slotObject.putStack(null);
+        			else
+        				slotObject.onSlotChanged();
 
-                                return null;
-                            } else {
-                                ItemStack returnStack = stack.copy();
-                                newStack.stackSize = newStack.getMaxStackSize();
-                                returnStack.stackSize = returnStack.stackSize - (newStack.getMaxStackSize() - newStack.stackSize);
-                                return returnStack;
-                            }
-                        }
-                        return stack;
-                    } else {
-                        getSlot(0).putStack(stack);
-                        return null;
+                    if (stackInSlot.stackSize == stack.stackSize) {
+                    	return null;
                     }
-                }
-            } else {
-                return null;
             }
-
-            if(stackInSlot.stackSize == 0)
-                slotObject.putStack(null);
-            else
-                slotObject.onSlotChanged();
-
             return stack;
-        }
-        return null;
     }
 
 }

@@ -33,70 +33,29 @@ public class TileEntityCarvingStone extends TileEntity implements IInventory {
 
 	@Override
 	public ItemStack decrStackSize(int i, int j) {
-		if(i > 2 && i <= 6) {
-			if(this.getStackInSlot(1) != null && this.getStackInSlot(2) != null && this.getStackInSlot(1).getItem() == ModJam.runes && this.getStackInSlot(2).getItem() == Item.dyePowder) {
-				switch(i) {
-				case 3:
-					inventory[4] = null;
-					inventory[5] = null;
-					inventory[6] = null;
-					break;
-				case 4:
-					inventory[3] = null;
-					inventory[5] = null;
-					inventory[6] = null;
-					break;
-				case 5:
-					inventory[4] = null;
-					inventory[3] = null;
-					inventory[6] = null;
-					break;
-				case 6:
-					inventory[4] = null;
-					inventory[5] = null;
-					inventory[3] = null;
-					break;
-				}
-				
-				this.decrStackSize(0, 1);
-				this.decrStackSize(1, 1);
-				this.decrStackSize(2, 1);
-				
-				if(inventory[i] != null) {
-					if(inventory[i].stackSize <= j) {
-						ItemStack newStack = inventory[i].copy();
-						inventory[i] = null;
-						return newStack;
-					} else {
-						ItemStack newStack = inventory[i].splitStack(j);
-						if(inventory[i].stackSize == 0) {
-							inventory[i] = null;
-						}
-						return newStack;
-					}
-				}
-				
-			}
-		} else if(inventory[i] != null) {
-			if(inventory[i].stackSize <= j) {
-				if(i == 0 ) {
-					inventory[3] = null;
-					inventory[4] = null;
-					inventory[5] = null;
-					inventory[6] = null;
-				}
-				ItemStack newStack = inventory[i].copy();
-				inventory[i] = null;
-				return newStack;
+		ItemStack stack;
+		if(i >= 3) {
+			if(inventory[0] != null && inventory[1] != null && inventory[2] != null) {
+				remove(i);				
 			} else {
-				ItemStack newStack = inventory[i].splitStack(j);
+				return null;
+			}
+		}
+		if(inventory[i] != null) {
+			if(inventory[i].stackSize - j > 0) {
+				stack = inventory[i].splitStack(j);
 				if(inventory[i].stackSize == 0) {
 					inventory[i] = null;
 				}
-				return newStack;
+				update();
+				return stack;
+			} else {
+				stack = inventory[i];
+				inventory[i] = null;
+				update();
+				return stack;
 			}
 		}
-		this.update();
 		return null;
 	}
 
@@ -106,7 +65,7 @@ public class TileEntityCarvingStone extends TileEntity implements IInventory {
 	}
 	
 	public void update() {
-		if(inventory[0] != null) {
+		if(inventory[0] != null && inventory[1] != null && inventory[2] != null) {
 			Integer[] runes = new Integer[]{};
 			for(int var1 = 1; var1 != RuneRegistry.getrunes().size(); var1++) {
 				if(RuneRegistry.getrunes().get(var1).getSacrifice() == inventory[0].getItem()) {
@@ -140,6 +99,40 @@ public class TileEntityCarvingStone extends TileEntity implements IInventory {
 				ItemStack stack = new ItemStack(ModJam.runes, 1, runes[3]);
 				stack.setTagCompound(tag);
 				inventory[4] = stack;
+			}
+		} else {
+			inventory[3] = null;
+			inventory[4] = null;
+			inventory[5] = null;
+			inventory[6] = null;
+		}
+	}
+	
+	public void remove(int i) {
+		if(inventory[0] != null && inventory[1] != null && inventory[2] != null) {
+			inventory[0].splitStack(1);
+			if(inventory[0].stackSize == 0) {
+				inventory[0] = null;
+			}
+			inventory[1].splitStack(1);
+			if(inventory[1].stackSize == 0) {
+				inventory[1] = null;
+			}
+			inventory[2].splitStack(1);
+			if(inventory[2].stackSize == 0) {
+				inventory[2] = null;
+			}
+			if(i != 3) {
+				inventory[3] = null;
+			}
+			if(i != 4) {
+				inventory[4] = null;
+			}
+			if(i != 5) {
+				inventory[5] = null;
+			}
+			if(i != 6) {
+				inventory[6] = null;
 			}
 		}
 	}
