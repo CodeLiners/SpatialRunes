@@ -39,7 +39,7 @@ public class GUIHandler implements IGuiHandler {
 			return new GuiCarvingStone(player, (TileEntityCarvingStone) world.getBlockTileEntity(x, y, z));
 		}
 		if(player.getHeldItem() != null && player.getHeldItem().itemID == ModJam.scroll.itemID) {
-			return new GuiPapyrusScroll(new ContainerPapyrusScroll());
+			return new GuiPapyrusScroll(new ContainerPapyrusScroll(), player);
 		}
 		if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemStaff) {
 			return new GuiStaff(player, new InventoryStaff(player));

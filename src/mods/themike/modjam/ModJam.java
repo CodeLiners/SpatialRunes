@@ -1,11 +1,13 @@
 package mods.themike.modjam;
 
 import themike.core.render.RenderHelper;
+import mods.themike.modjam.api.pages.PageRegistry;
 import mods.themike.modjam.api.runes.RuneRegistry;
 import mods.themike.modjam.handler.GUIHandler;
 import mods.themike.modjam.handler.MobDropHandler;
 import mods.themike.modjam.handler.SoundHandler;
 import mods.themike.modjam.packet.PacketHandler;
+import mods.themike.modjam.pages.*;
 import mods.themike.modjam.proxy.IProxy;
 import mods.themike.modjam.tile.BlankTileEntity;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
@@ -63,6 +65,11 @@ public class ModJam {
 		RuneRegistry.appendRune(new RunePower());
 		RuneRegistry.appendRune(new RuneProtection());
 		RuneRegistry.appendRune(new RuneRegeneration());
+		
+		PageRegistry.appendPage(new TitlePage());
+		PageRegistry.appendPage(new ContentsPage());
+		PageRegistry.appendPage(new SpatiiPage());
+		PageRegistry.appendPage(new FirstStaffPage());
 				
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		ModJamConfiguration.init(config);		

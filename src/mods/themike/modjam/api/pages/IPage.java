@@ -6,6 +6,4 @@ public interface IPage {
 	
 	public String getHeader();
 	
-	public int getChapter();
-
 }

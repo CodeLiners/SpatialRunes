@@ -1,16 +1,17 @@
 package mods.themike.modjam.api.pages;
 
-import com.google.common.collect.ObjectArrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PageRegistry {
 	
-	private static IPage[] pages = new IPage[100];
+	private static List<IPage> pages = new ArrayList<IPage>();
 	
 	public static void appendPage(IPage page) {
-		pages = ObjectArrays.concat(page, pages);
+		pages.add(page);
 	}
 	
-	public static IPage[] getPages() {
+	public static List<IPage> getPages() {
 		return pages;
 	}
 
