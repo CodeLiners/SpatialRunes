@@ -1,5 +1,6 @@
 package mods.themike.modjam;
 
+import themike.core.proxy.IProxy;
 import themike.core.render.RenderHelper;
 import mods.themike.modjam.api.pages.PageRegistry;
 import mods.themike.modjam.api.runes.RuneRegistry;
@@ -8,7 +9,6 @@ import mods.themike.modjam.handler.MobDropHandler;
 import mods.themike.modjam.handler.SoundHandler;
 import mods.themike.modjam.packet.PacketHandler;
 import mods.themike.modjam.pages.*;
-import mods.themike.modjam.proxy.IProxy;
 import mods.themike.modjam.tile.BlankTileEntity;
 import mods.themike.modjam.tile.TileEntityCarvingStone;
 import net.minecraft.block.Block;

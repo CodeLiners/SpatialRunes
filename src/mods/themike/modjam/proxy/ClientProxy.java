@@ -1,5 +1,6 @@
 package mods.themike.modjam.proxy;
 
+import themike.core.proxy.IProxy;
 import mods.themike.modjam.handler.SimpleBlockRenderingHandler;
 import mods.themike.modjam.render.RenderCarvingStone;
 import mods.themike.modjam.render.RenderMagebrickLamp;
